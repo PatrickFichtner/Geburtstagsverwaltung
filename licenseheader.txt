@@ -1,7 +1,7 @@
 <#if licenseFirst??>
 ${licenseFirst}
 </#if>
-${licensePrefix}Copyright © ${date?date?string("yyyy")} Dennis Schulmeister-Zimolong
+${licensePrefix}Copyright © ${date?date?string("yyyy")} Beliz Balim, Isabel Börkel, PatrickFichtner
 ${licensePrefix}
 ${licensePrefix}E-Mail: dhbw@windows3.de
 ${licensePrefix}Webseite: https://www.wpvs.de/
