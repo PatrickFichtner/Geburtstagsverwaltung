@@ -9,7 +9,7 @@
             className      = "org.apache.catalina.realm.DataSourceRealm"
 
             dataSourceName = "Default-Database-Unmanaged"
-            userTable      = "geburtstagsverwaltung.geburtstagsverwaltung_benutzer"
+            userTable      = "geburtstagsverwaltung.geburtstagsverwaltung_user"
             userNameCol    = "username"
             userCredCol    = "password_hash"
 
