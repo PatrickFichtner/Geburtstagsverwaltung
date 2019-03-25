@@ -1,9 +1,9 @@
 /*
  * Copyright © 2018 Dennis Schulmeister-Zimolong
- * 
+ *
  * E-Mail: dhbw@windows3.de
  * Webseite: https://www.wpvs.de/
- * 
+ *
  * Dieser Quellcode ist lizenziert unter einer
  * Creative Commons Namensnennung 4.0 International Lizenz.
  */
@@ -34,7 +34,7 @@ import javax.validation.constraints.Size;
  * Datenbankklasse für einen Benutzer.
  */
 @Entity
-@Table(name = "JTODO_USER")
+@Table(name = "GEBURTSTAGSVERWALTUNG_USER")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,7 +45,7 @@ public class User implements Serializable {
     @Size(min = 5, max = 64, message = "Der Benutzername muss zwischen fünf und 64 Zeichen lang sein.")
     @NotNull(message = "Der Benutzername darf nicht leer sein.")
     private String username;
-    
+
     public class Password {
         @Size(min = 6, max = 64, message = "Das Passwort muss zwischen sechs und 64 Zeichen lang sein.")
         public String password = "";
@@ -59,7 +59,7 @@ public class User implements Serializable {
 
     @ElementCollection
     @CollectionTable(
-            name = "JTODO_USER_GROUP",
+            name = "GEBURTSTAGSVERWALTUNG_USER_GROUP",
             joinColumns = @JoinColumn(name = "USERNAME")
     )
     @Column(name = "GROUPNAME")
@@ -136,7 +136,7 @@ public class User implements Serializable {
      * Berechnet einen Hashwert aus dem übergebenen Passwort und legt ihn im
      * Feld passwordHash ab. Somit wird das Passwort niemals als Klartext
      * gespeichert.
-     * 
+     *
      * Gleichzeitig wird das Passwort im nicht gespeicherten Feld password
      * abgelegt, um durch die Bean Validation Annotationen überprüft werden
      * zu können.
@@ -155,7 +155,7 @@ public class User implements Serializable {
     public Password getPassword() {
         return this.password;
     }
-    
+
     /**
      * Prüft, ob das übergebene Passwort korrekt ist.
      *
