@@ -7,15 +7,15 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>jTodo</name>
+    <name>Geburtstagsverwaltung</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        
+
         <javaee.version>7.0</javaee.version>
     </properties>
-    
+
     <dependencies>
         <!-- Jakarta Eneterprise Edition APIs -->
         <dependency>
