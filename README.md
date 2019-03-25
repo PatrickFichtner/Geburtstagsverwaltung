@@ -1,4 +1,4 @@
-Anwendung "Geburtstag!"
+Anwendung "Geburtstagsverwaltung"
 =========================
 
 Entwickler und Repository
