@@ -21,7 +21,7 @@ import javax.validation.constraints.Size;
  *
  * @author Isabel
  */
-public class category implements Serializable {
+public class Category implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "category_ids")
@@ -39,10 +39,10 @@ public class category implements Serializable {
     
     //Konstruktoren
 
-    public category() {
+    public Category() {
     }
 
-    public category(String name) {
+    public Category(String name) {
         this.name = name;
     }
     
