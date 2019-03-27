@@ -25,9 +25,7 @@ public class Geburtstag implements Serializable {
     @NotNull(message = "Der Geburtstag muss einem Benutzer geordnet werden.")
     private User owner;
     
-    //ToDO & auch die Getter und Setter
-    //@ManyToOne
-    //private Category category;
+  
   
     private String title;
     
@@ -40,6 +38,10 @@ public class Geburtstag implements Serializable {
     private Date date;
     
     private String notiz;
+    
+      //ToDO & auch die Getter und Setter
+    //@ManyToOne
+    //private Category category;
     
     //Konstruktoren
     

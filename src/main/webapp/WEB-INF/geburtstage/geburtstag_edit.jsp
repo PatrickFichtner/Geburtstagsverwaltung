@@ -28,7 +28,7 @@
 
     <jsp:attribute name="menu">
         <div class="menuitem">
-            <a href="<c:url value="/app/home/"/>">Home</a>
+            <a href="<c:url value="/app/dashboard/"/>">Home</a>
         </div>
         
         <div class="menuitem">
@@ -43,19 +43,24 @@
                 <input type="hidden" name="csrf_token" value="${csrf_token}">
 
                 <%-- Eingabefelder --%>
+                <label for="geburtstag_title">Title:</label>
+                <div class="side-by-side">
+                    <input type="text" name="geburtstag_title" value="${geburtstag_form.values["geburtstag_title"][0]}">
+                </div>
+                
                 <label for="geburtstag_name">Name:</label>
                 <div class="side-by-side">
-                    <input type="text" name="geburtstag_name" value="${geburtstag_form.values["geburtstag_name"][0]}" readonly="readonly">
+                    <input type="text" name="geburtstag_name" value="${geburtstag_form.values["geburtstag_name"][0]}" >
                 </div>
                 
                 <label for="geburtstag_surname">Surname:</label>
                 <div class="side-by-side">
-                    <input type="text" name="geburtstag_surname" value="${geburtstag_form.values["geburtstag_surname"][0]}" readonly="readonly">
+                    <input type="text" name="geburtstag_surname" value="${geburtstag_form.values["geburtstag_surname"][0]}" >
                 </div>
                 
                 <label for="geburtstag_notiz">Notiz</label>
                 <div class="side-by-side">
-                    <input type="text" name="geburtstag_notiznotiz" value="${geburtstag_form.values["geburtstag_notiz"][0]}" readonly="readonly">
+                    <input type="text" name="geburtstag_notiznotiz" value="${geburtstag_form.values["geburtstag_notiz"][0]}" >
                 </div>
 
                 <label for="geburtstag_date">
@@ -65,6 +70,7 @@
                 <div class="side-by-side">
                     <input type="text" name="geburtstag_date" value="${geburtstag_form.values["geburtstag_date"][0]}">
                 </div>
+                
                 
                 <!--TODO
                 <label for="geburtstag_category">Kategorie:</label>
