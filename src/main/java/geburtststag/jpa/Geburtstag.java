@@ -24,9 +24,7 @@ public class Geburtstag implements Serializable {
     @ManyToOne
     @NotNull(message = "Der Geburtstag muss einem Benutzer geordnet werden.")
     private User owner;
-    
-  
-  
+   
     private String title;
     
     @NotNull(message = "Der Name darf nicht leer sein.")
@@ -38,17 +36,13 @@ public class Geburtstag implements Serializable {
     private Date date;
     
     private String notiz;
-    
-      //ToDO & auch die Getter und Setter
-    //@ManyToOne
-    //private Category category;
-    
-    //Konstruktoren
-    
+   
+    @ManyToOne
+    private category category;
+   
     public Geburtstag() {
     }
     
-   //TODO - Konstruktor mit allen Variablen auch mit Category
 
     public long getId() {
         return id;
@@ -110,8 +104,12 @@ public class Geburtstag implements Serializable {
     public void setNotiz(String notiz) {
         this.notiz = notiz;
     }
-    
-    
-    
-  
+
+    public category getCategory() {
+        return category;
+    }
+
+    public void setCategory(category category) {
+        this.category = category;
+    }
 }

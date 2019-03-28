@@ -4,7 +4,8 @@ package geburtststag.ejb;
 
 import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.EntityBean;
 import geburtststag.jpa.Geburtstag;
-import java.util.Date;
+import geburtststag.jpa.category;
+import java.sql.Date;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
@@ -43,11 +44,11 @@ public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
      * Anders als in der Vorlesung behandelt, wird die SELECT-Anfrage hier
      * mit der CriteriaBuilder-API vollkommen dynamisch erzeugt.
      * 
-     * @param search In der Kurzbeschreibung enthaltener Text (optional)
+     * @param name  Der Name des Geburtstagskind
      * @param category Kategorie (optional)
      * @return Liste mit den gefundenen Aufgaben
      */
-    /*public List<Geburtstag> search(String name, Category category) {
+    public List<Geburtstag> search(String name, category category) {
         // Hilfsobjekt zum Bauen des Query
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
         
@@ -75,7 +76,7 @@ public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
         
         
         return em.createQuery(query).getResultList();
-    }*/
+    }
    
     
     /**
@@ -84,12 +85,11 @@ public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
      * @param date Datum
      * @return Alle Geburtstage gespeichert von einem Benutzer an einem bestimmten Tag 
      */
-    public List<Geburtstag> findByDate (Date date, String username) {
+    public List<Geburtstag> findByDate (Date date) {
         return em.createQuery(
                         "SELECT g FROM Geburtstag g"
-                      + "  WHERE g.owner.username LIKE :username AND g.date LIKE :date"
+                      + "  WHERE g.date = :date"
                      )
-                     .setParameter("username", username)
                      .setParameter("date", date)
                      .getResultList();
     }
@@ -100,7 +100,7 @@ public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
         if (geburtstag == null) 
             return null;
         
-        geburtstag.setDate((java.sql.Date) date);
+        geburtstag.setDate(date);
         return super.em.merge(geburtstag);
     }  
 }

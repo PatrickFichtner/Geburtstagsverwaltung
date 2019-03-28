@@ -78,6 +78,10 @@ public class WebUtils {
     public static String formatDate(Date date) {
         return DATE_FORMAT.format(date);
     }
+    
+    public static String formatUtilDate (java.util.Date date ) {
+        return DATE_FORMAT.format(date);
+    }
 
     /**
      * Formatiert eine Uhrzeit für die Ausgabe, z.B. 11:50:00

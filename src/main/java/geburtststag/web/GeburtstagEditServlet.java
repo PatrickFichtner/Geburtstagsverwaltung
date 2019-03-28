@@ -203,13 +203,13 @@ public class GeburtstagEditServlet extends HttpServlet {
         String geburtstagSurname = request.getParameter("geburtstag_surname");
         String stringGeburtstagDate = request.getParameter("geburtstag_date");
         String geburtstagNotiz = request.getParameter("geburtstag_notiz");
+        String geburtstagCategory = request.getParameter("geburtstag_category");
         
         Geburtstag geburtstag = this.getRequestedGeburtstag(request);
 
-         /* TODO - CATEGORY
-        if (taskCategory != null && !taskCategory.trim().isEmpty()) {
+       /*if (geburtstagCategory != null && !geburtstagCategory.trim().isEmpty()) {
             try {
-                task.setCategory(this.categoryBean.findById(Long.parseLong(taskCategory)));
+                geburtstag.setCategory(this.cb.findById(Long.parseLong(taskCategory)));
             } catch (NumberFormatException ex) {
                 // Ungültige oder keine ID mitgegeben
             }

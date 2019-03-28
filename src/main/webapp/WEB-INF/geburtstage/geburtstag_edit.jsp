@@ -70,9 +70,8 @@
                 <div class="side-by-side">
                     <input type="text" name="geburtstag_date" value="${geburtstag_form.values["geburtstag_date"][0]}">
                 </div>
-                
-                
-                <!--TODO
+              
+                <!-- ToDO
                 <label for="geburtstag_category">Kategorie:</label>
                 <div class="side-by-side">
                     <select name="geburtstag_category">
@@ -84,9 +83,9 @@
                             </option>
                         </c:forEach>
                     </select>
-                </div>
-                -->
+                </div> -->
                 
+           
                 <%-- Button zum Abschicken --%>
                 <div class="side-by-side">
                     <button class="icon-pencil" type="submit" name="action" value="save">

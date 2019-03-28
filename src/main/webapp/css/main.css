@@ -36,8 +36,10 @@ html {
 }
 
 body {
-    
+    height: 100%;
+    width: 100%;
 }
+
 
 @media (max-width: 768px) {
     html {
@@ -92,4 +94,10 @@ a, a:visited {
 
 a:hover {
     text-decoration: underline;
+}
+
+
+main {
+   height:100%;
+   width: 100%;
 }
