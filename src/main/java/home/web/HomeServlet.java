@@ -31,10 +31,9 @@ public class HomeServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Dashboard-Rubriken und Kacheln erzeugen und im Request Context ablegen
+        // Home-Rubriken und Kacheln erzeugen 
         List<HomeSection> sections = new ArrayList<>();
-        
-        
+       
         hc.createHomeContent(sections);
 
         //Home-Rubriken und Kacheln im Request Context ablegen und Anfrage an die JSP weiterleiten

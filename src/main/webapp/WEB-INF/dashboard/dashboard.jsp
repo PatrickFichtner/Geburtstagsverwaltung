@@ -37,34 +37,31 @@
     </jsp:attribute>
 
     <jsp:attribute name="content">
-        <c:choose>
-            <c:when test="${empty sections}">
-                <p>
-                    Heute hat keiner Geburtstag 
-                </p>
-            </c:when>
-            <c:otherwise>
-                <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils"/>
-
-                <c:forEach items="${sections}" var="section">
-                    <h2>
-                        <c:out value="${section.label}"/>
-                    </h2>
-
-                    <c:forEach items="${section.tiles}" var="tile">
-                        <div class="tile ${tile.cssClass}">
-                            <a href="<c:url value="${tile.href}"/>">
-                                <div class="content">
-                                    <div class="label">
-                                        <c:out value="${tile.name}"/>
+        <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils"/>
+            <c:forEach items="${sections}" var="section">
+                <h2>
+                    <c:out value="${section.label}"/>
+                </h2>
+                <c:choose>
+                    <c:when test="${empty section.tiles}">
+                        <p>Heute hat keiner Geburstag</p> 
+                    </c:when>   
+                    <c:otherwise>
+                        <c:forEach items="${section.tiles}" var="tile">
+                            <div class="tile">
+                                <!--<a href="<c:url value="${tile.href}"/>"-->
+                                    <div class="content">
+                                        <div class="label">
+                                            <c:out value="${tile.name}"/>
+                                        </div>
+                                        <!-- TODO CATEGORY-->
+                                        <div class="icon icon-${tile.icon}"></div>
                                     </div>
-                                    <div class="icon icon-${tile.icon}"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </c:forEach>
-                </c:forEach>
-            </c:otherwise>
-        </c:choose>   
+                                <!-- </a> -->
+                            </div>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>        
+            </c:forEach>
     </jsp:attribute>
 </template:base>

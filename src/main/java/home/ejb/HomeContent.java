@@ -10,6 +10,7 @@ import dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils;
 import geburtststag.ejb.GeburtstagBean;
 import geburtststag.jpa.Geburtstag;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -17,7 +18,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 /**
- *
+ * EJB zur Definition der Home-Kacheln für Aufgaben.
  * @author belizbalim
  */
 @Stateless
@@ -26,29 +27,43 @@ public class HomeContent {
     @EJB 
     GeburtstagBean gb;
     
+    
+    /**
+     * Vom Home aufgerufenen Methode, um die anzuzeigenden Rubriken und
+     * Kacheln zu ermitteln.
+     *
+     * @param sections Liste der Home-Rubriken und Kacheln, an die die neuen Rubriken
+     * angehängt werden müssen
+     */
     public void createHomeContent(List<HomeSection> sections) {
-   
-        HomeSection section = new HomeSection();
-        section.setLabel("Heute");
-       
-        String stringToday = WebUtils.formatUtilDate(new Date());
-        java.sql.Date sqlToday = WebUtils.parseDate(stringToday);
-              
-        List<Geburtstag> geburtstage = gb.findByDate(sqlToday);
-       
-        Iterator it = geburtstage.iterator();
         
-        
-        while (it.hasNext()) {
-            HomeTile tile = new HomeTile ();
-            Geburtstag geburtstag = (Geburtstag) it.next();
-            
-            tile.setName(geburtstag.getFullname());
-            section.getTiles().add(tile);
-        }
-        
-        boolean add = sections.add(section);
-        //ADD HREF?? TODO        
+        // Zunächst einen Abschnitt mit Geburtstage von Heute erstellen und einfügen
+        HomeSection section1 = this.createSection("Heute");
+        sections.add(section1);    
     }
     
+    private HomeSection createSection(String label) {
+        HomeSection section = new HomeSection();
+        section.setLabel(label);
+        
+        //Ermitteln von Geburtstage von heute anhand eine Datenbankquery
+            String stringToday = WebUtils.formatUtilDate(new Date());
+            java.sql.Date sqlToday = WebUtils.parseDate(stringToday);   
+            List<Geburtstag> geburtstage = gb.findByDate(sqlToday);
+            Iterator it = geburtstage.iterator();
+        
+            //Tiles erstellen, beschriften und auf den Abschnitt einfügen
+            while (it.hasNext()) {
+                HomeTile tile = new HomeTile ();
+                Geburtstag geburtstag = (Geburtstag) it.next();
+                //TODO für category
+                tile.setName(geburtstag.getFullname());
+                tile.setIcon("calendar");
+                // TODO link - tile.setHref("/app/tasks/list/");
+                section.getTiles().add(tile);
+            }
+        return section;    
+    }    
 }
+    
+
