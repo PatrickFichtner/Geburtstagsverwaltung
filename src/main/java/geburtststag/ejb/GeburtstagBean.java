@@ -4,7 +4,7 @@ package geburtststag.ejb;
 
 import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.EntityBean;
 import geburtststag.jpa.Geburtstag;
-import geburtststag.jpa.category;
+import geburtststag.jpa.Category;
 import java.sql.Date;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
@@ -48,7 +48,7 @@ public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
      * @param category Kategorie (optional)
      * @return Liste mit den gefundenen Aufgaben
      */
-    public List<Geburtstag> search(String name, category category) {
+    public List<Geburtstag> search(String name, Category category) {
         // Hilfsobjekt zum Bauen des Query
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
         
