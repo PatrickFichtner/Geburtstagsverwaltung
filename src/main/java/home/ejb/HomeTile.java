@@ -13,7 +13,7 @@ import java.util.Date;
  * @author belizbalim
  */
 public class HomeTile {
-    
+
     private String name = "";
     private String category; 
     private String href = "";
@@ -51,5 +51,5 @@ public class HomeTile {
 
     public void setIcon(String icon) {
         this.icon = icon;
-    }   
+    }
 }

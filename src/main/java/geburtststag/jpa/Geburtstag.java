@@ -16,33 +16,33 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Geburtstag implements Serializable {
- 
+
     @Id
     @GeneratedValue
     private long id;
-    
+
     @ManyToOne
     @NotNull(message = "Der Geburtstag muss einem Benutzer geordnet werden.")
     private User owner;
-   
+
     private String title;
-    
+
     @NotNull(message = "Der Name darf nicht leer sein.")
     private String name;
-    
+
     private String surname;
-    
+
     @NotNull(message = "Das Datum darf nicht leer sein.")
     private Date date;
-    
+
     private String notiz;
-   
+
     @ManyToOne
     private Category category;
    
     public Geburtstag() {
     }
-    
+
 
     public long getId() {
         return id;
@@ -80,14 +80,14 @@ public class Geburtstag implements Serializable {
     String name = this.title + " " + this.name + " " + this.surname;
     return name.trim();
     }
-    
+
     public Date getDate() {
         return date;
     }
 
     public void setDate(Date date) {
         this.date = date;
-    }      
+    }
 
     public User getOwner() {
         return owner;

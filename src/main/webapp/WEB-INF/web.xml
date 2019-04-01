@@ -1,17 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <listener>
-        <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
-    </listener>
-    <servlet>
-        <servlet-name>GeburtstagWebServiceService</servlet-name>
-        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GeburtstagWebServiceService</servlet-name>
-        <url-pattern>/GeburtstagWebServiceService</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -20,12 +8,12 @@
     <!--
         Authentifizierung / Authorisierung
         ==================================
-        
+
         Alle URLs, die mit /app/ beginnen, können nur aufgerufen werden,
         wenn der Anwender sich mit einem gültigen Benutzer eingeloggt hat.
         Der Versuch, eine solche Seite aufzrufen, ohne eingeloggt zu sein,
         führt automatisch zur Login-Seite.
-        
+
         Vgl. https://stackoverflow.com/questions/3134228/restrict-jsp-servlet-access-to-specific-users-only/3134323#3134323
         Vgl. https://docs.oracle.com/javaee/7/tutorial/security-advanced003.htm
         Vgl. https://dzone.com/articles/jdbc-realm-and-form-based
