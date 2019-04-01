@@ -28,7 +28,7 @@
 
     <jsp:attribute name="menu">
         <div class="menuitem">
-            <a href="<c:url value="/app/dashboard/"/>">Home</a>
+            <a href="<c:url value="/app/home/"/>">Home</a>
         </div>
         
         <div class="menuitem">
@@ -77,7 +77,7 @@
                 <div class="side-by-side">
                     <select name="geburtstag_category">
                         <option value="">Keine Kategorie</option>
-                            <c:if test="${!empty categries}">
+                            <c:if test="${!empty categories}">
                                 <c:forEach items="${categories}" var="category">
                                     <option value="${category.id}" ${geburtstag_form.values["geburtstag_category"][0] == category.id.toString() ? 'selected' : ''}>
                                         <c:out value="${category.name}" />

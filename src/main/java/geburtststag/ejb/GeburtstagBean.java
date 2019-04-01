@@ -38,6 +38,7 @@ public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
                  .getResultList();
     }
     
+    
     /**
      * Suche nach Geburtstage anhand des Namens und Kategorie.
      * 
