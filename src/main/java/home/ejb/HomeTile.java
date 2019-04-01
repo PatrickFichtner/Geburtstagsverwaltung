@@ -5,7 +5,7 @@
  */
 package home.ejb;
 
-import geburtststag.jpa.category;
+import geburtststag.jpa.Category;
 import java.util.Date;
 
 /**
@@ -15,7 +15,7 @@ import java.util.Date;
 public class HomeTile {
     
     private String name = "";
-    private category category; 
+    private String category; 
     private String href = "";
     private String icon = "";
     public HomeTile() {
@@ -29,11 +29,11 @@ public class HomeTile {
         this.name = name;
     }
 
-    public category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

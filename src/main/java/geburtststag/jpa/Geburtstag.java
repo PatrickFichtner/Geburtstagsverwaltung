@@ -38,7 +38,7 @@ public class Geburtstag implements Serializable {
     private String notiz;
    
     @ManyToOne
-    private category category;
+    private Category category;
    
     public Geburtstag() {
     }
@@ -105,11 +105,11 @@ public class Geburtstag implements Serializable {
         this.notiz = notiz;
     }
 
-    public category getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(category category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 }

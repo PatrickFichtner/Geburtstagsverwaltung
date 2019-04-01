@@ -48,7 +48,9 @@
                     <input type="text" name="geburtstag_title" value="${geburtstag_form.values["geburtstag_title"][0]}">
                 </div>
                 
-                <label for="geburtstag_name">Name:</label>
+                <label for="geburtstag_name">Name:
+                    <span class="required">*</span>
+                </label>
                 <div class="side-by-side">
                     <input type="text" name="geburtstag_name" value="${geburtstag_form.values["geburtstag_name"][0]}" >
                 </div>
@@ -71,21 +73,20 @@
                     <input type="text" name="geburtstag_date" value="${geburtstag_form.values["geburtstag_date"][0]}">
                 </div>
               
-                <!-- ToDO
                 <label for="geburtstag_category">Kategorie:</label>
                 <div class="side-by-side">
                     <select name="geburtstag_category">
                         <option value="">Keine Kategorie</option>
-
-                        <c:forEach items="${categories}" var="category">
-                            <option value="${category.id}" ${geburtstag_form.values["geburtstag_category"][0] == category.id.toString() ? 'selected' : ''}>
-                                <c:out value="${category.name}" />
-                            </option>
-                        </c:forEach>
-                    </select>
-                </div> -->
-                
-           
+                            <c:if test="${!empty categries}">
+                                <c:forEach items="${categories}" var="category">
+                                    <option value="${category.id}" ${geburtstag_form.values["geburtstag_category"][0] == category.id.toString() ? 'selected' : ''}>
+                                        <c:out value="${category.name}" />
+                                    </option>
+                                 </c:forEach>
+                            </c:if>        
+                    </select> 
+                </div> 
+                <br>
                 <%-- Button zum Abschicken --%>
                 <div class="side-by-side">
                     <button class="icon-pencil" type="submit" name="action" value="save">

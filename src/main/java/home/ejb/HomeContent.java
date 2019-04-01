@@ -8,6 +8,7 @@ package home.ejb;
 
 import dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils;
 import geburtststag.ejb.GeburtstagBean;
+import geburtststag.jpa.Category;
 import geburtststag.jpa.Geburtstag;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -56,7 +57,13 @@ public class HomeContent {
             while (it.hasNext()) {
                 HomeTile tile = new HomeTile ();
                 Geburtstag geburtstag = (Geburtstag) it.next();
-                //TODO für category
+                Category category = geburtstag.getCategory();
+                if (category != null){
+                    tile.setCategory(geburtstag.getCategory().getName());
+                }
+                else {
+                    tile.setCategory("");
+                }    
                 tile.setName(geburtstag.getFullname());
                 tile.setIcon("calendar");
                 // TODO link - tile.setHref("/app/tasks/list/");

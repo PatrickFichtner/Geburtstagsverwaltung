@@ -9,7 +9,9 @@ import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.ValidationBean;
 import dhbwka.wwi.vertsys.javaee.jtodo.common.web.FormValues;
 import dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils;
+import geburtststag.ejb.CategoryBean;
 import geburtststag.ejb.GeburtstagBean;
+import geburtststag.jpa.Category;
 import geburtststag.jpa.Geburtstag;
 import java.io.IOException;
 import java.sql.Date;
@@ -39,7 +41,8 @@ public class GeburtstagEditServlet extends HttpServlet {
     @EJB
     GeburtstagBean gb;
     
-    //TODO EJB Category
+    @EJB
+    CategoryBean cb;
     
     @EJB
     UserBean userBean;
@@ -51,11 +54,9 @@ public class GeburtstagEditServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //TODO
-        // Verfügbare Kategorien für die Suchfelder ermitteln
-        //request.setAttribute("categories", this.categoryBean.findAllSorted());
-        //request.setAttribute("statuses", TaskStatus.values());
-
+        // Verfügbare Kategorien für die Suchfelder ermitteln  
+        request.setAttribute("categories", this.cb.findAllSorted());
+       
         // Zu bearbeitende Geburtstag einlesen
         HttpSession session = request.getSession();
 
@@ -167,12 +168,12 @@ public class GeburtstagEditServlet extends HttpServlet {
             geburtstag.getNotiz()
         });
         
-        /*TODO Category
+        //TODO Category
         if (geburtstag.getCategory() != null) {
-            values.put("task_category", new String[]{
-                "" + task.getCategory().getId()
+            values.put("geburtstag_category", new String[]{
+                "" + geburtstag.getCategory().getId()
             });
-        }*/
+        }
 
 
         values.put("geburtstag_date", new String[]{
@@ -207,9 +208,9 @@ public class GeburtstagEditServlet extends HttpServlet {
         
         Geburtstag geburtstag = this.getRequestedGeburtstag(request);
 
-       /*if (geburtstagCategory != null && !geburtstagCategory.trim().isEmpty()) {
+        /*if (geburtstagCategory != null && !geburtstagCategory.trim().isEmpty()) {
             try {
-                geburtstag.setCategory(this.cb.findById(Long.parseLong(taskCategory)));
+                geburtstag.setCategory(this.cb.findById(Long.parseLong(geburtstagCategory)));
             } catch (NumberFormatException ex) {
                 // Ungültige oder keine ID mitgegeben
             }
