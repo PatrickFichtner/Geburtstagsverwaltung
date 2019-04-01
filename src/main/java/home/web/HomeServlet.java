@@ -38,6 +38,6 @@ public class HomeServlet extends HttpServlet {
 
         //Home-Rubriken und Kacheln im Request Context ablegen und Anfrage an die JSP weiterleiten
         request.setAttribute("sections", sections);
-        request.getRequestDispatcher("/WEB-INF/dashboard/dashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/home/home.jsp").forward(request, response);
     }
 }
