@@ -5,11 +5,11 @@
  */
 package geburtststag.jpa;
 
-import dhbwka.wwi.vertsys.javaee.jtodo.tasks.jpa.Task;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +23,7 @@ import javax.validation.constraints.Size;
  *
  * @author Isabel
  */
+@Entity
 public class Category implements Serializable {
     
     @Id
@@ -37,6 +38,7 @@ public class Category implements Serializable {
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     List<Geburtstag> geburtstage = new ArrayList<>();
+    
     
     //Konstruktoren
 

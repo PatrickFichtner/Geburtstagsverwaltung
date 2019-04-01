@@ -5,6 +5,7 @@
  */
 package geburtststag.ejb;
 
+import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.EntityBean;
 import geburtststag.jpa.Category;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
@@ -18,8 +19,14 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 @RolesAllowed("app-user")
-public class CategoryBean {
+public class CategoryBean extends EntityBean<Category, Long> {
 
+    public CategoryBean() {
+        super(Category.class);
+    }
+    
+    
+    /*
     @PersistenceContext
     EntityManager em;
     
@@ -45,7 +52,7 @@ public class CategoryBean {
     public Category findCategory(long id) {
         return em.find(Category.class, id);
     }
-        
+    */    
     
     public List<Category> findAllSorted() {
         return this.em.createQuery("SELECT c FROM Category c ORDER BY c.name").getResultList();

@@ -9,7 +9,8 @@
  */
 package dhbwka.wwi.vertsys.javaee.jtodo.common.jpa;
 
-import dhbwka.wwi.vertsys.javaee.jtodo.tasks.jpa.Task;
+
+import geburtststag.jpa.Geburtstag;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -66,7 +67,7 @@ public class User implements Serializable {
     List<String> groups = new ArrayList<>();
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    List<Task> tasks = new ArrayList<>();
+    List<Geburtstag> tasks = new ArrayList<>();
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public User() {
@@ -88,13 +89,7 @@ public class User implements Serializable {
         this.username = id;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
+   
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Passwort setzen und prüfen">
