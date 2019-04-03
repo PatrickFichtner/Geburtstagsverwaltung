@@ -5,7 +5,7 @@
  */
 
 package administration.ejb;
-import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
+import administration.jpa.User;
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJBContext;
