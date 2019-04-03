@@ -5,7 +5,8 @@
  */
 package geburtststag.web;
 
-import administration.ejb.UserBean;
+
+import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.ValidationBean;
 import dhbwka.wwi.vertsys.javaee.jtodo.common.web.FormValues;
 import dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils;

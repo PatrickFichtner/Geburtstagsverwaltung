@@ -10,8 +10,9 @@
 package dhbwka.wwi.vertsys.javaee.jtodo.common.web;
 
 
-import administration.ejb.UserBean;
-import administration.jpa.User;
+
+import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.UserBean;
+import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
 import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.ValidationBean;
 import java.io.IOException;
 import java.util.List;
