@@ -1,20 +1,16 @@
 /*
- * Copyright © 2018 Dennis Schulmeister-Zimolong
- * 
- * E-Mail: dhbw@windows3.de
- * Webseite: https://www.wpvs.de/
- * 
- * Dieser Quellcode ist lizenziert unter einer
- * Creative Commons Namensnennung 4.0 International Lizenz.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package dhbwka.wwi.vertsys.javaee.jtodo.tasks.web;
+package geburtststag.web;
 
-import dhbwka.wwi.vertsys.javaee.jtodo.common.web.FormValues;
-import dhbwka.wwi.vertsys.javaee.jtodo.tasks.ejb.CategoryBean;
-import dhbwka.wwi.vertsys.javaee.jtodo.tasks.ejb.TaskBean;
 import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.ValidationBean;
-import dhbwka.wwi.vertsys.javaee.jtodo.tasks.jpa.Category;
-import dhbwka.wwi.vertsys.javaee.jtodo.tasks.jpa.Task;
+import dhbwka.wwi.vertsys.javaee.jtodo.common.web.FormValues;
+import geburtststag.ejb.CategoryBean;
+import geburtststag.ejb.GeburtstagBean;
+import geburtststag.jpa.Category;
+import geburtststag.jpa.Geburtstag;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -27,42 +23,43 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Seite zum Anzeigen und Bearbeiten der Kategorien. Die Seite besitzt ein
- * Formular, mit dem ein neue Kategorie angelegt werden kann, sowie eine Liste,
- * die zum Löschen der Kategorien verwendet werden kann.
+ *
+ * @author Isabel
  */
-@WebServlet(urlPatterns = {"/app/tasks/categories/"})
-public class CategoryListServlet extends HttpServlet {
+@WebServlet(name = "CategoryServlet", urlPatterns = {"/app/geburtstage/categories/"})
+public class CategoryServlet extends HttpServlet {
 
     @EJB
     CategoryBean categoryBean;
-
+    
     @EJB
-    TaskBean taskBean;
-
+    GeburtstagBean geburtstagBean;
+    
     @EJB
     ValidationBean validationBean;
 
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
 
-        // Alle vorhandenen Kategorien ermitteln
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        //Alle Kategorien ermitteln
         request.setAttribute("categories", this.categoryBean.findAllSorted());
 
-        // Anfrage an dazugerhörige JSP weiterleiten
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/tasks/category_list.jsp");
+        //Anfrage an JSP weiterleiten
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/geburtstage/category.jsp");
         dispatcher.forward(request, response);
 
-        // Alte Formulardaten aus der Session entfernen
+        //Alte Formulardaten aus der Session entfernen
         HttpSession session = request.getSession();
-        session.removeAttribute("categories_form");
+        session.removeAttribute("categories_form");        
     }
 
-    @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
         // Angeforderte Aktion ausführen        
         String action = request.getParameter("action");
 
@@ -149,12 +146,12 @@ public class CategoryListServlet extends HttpServlet {
             }
 
             // Bei allen betroffenen Aufgaben, den Bezug zur Kategorie aufheben
-            List<Task> tasks = category.getTasks();
+            List<Geburtstag> geburtstage = category.getGeburtstage();
 
-            if (tasks != null) {
-                tasks.forEach((Task task) -> {
-                    task.setCategory(null);
-                    this.taskBean.update(task);
+            if (geburtstage != null) {
+                geburtstage.forEach((Geburtstag gb) -> {
+                    gb.setCategory(null);
+                    this.geburtstagBean.update(gb);
                 });
             }
 
@@ -165,5 +162,6 @@ public class CategoryListServlet extends HttpServlet {
         // Browser auffordern, die Seite neuzuladen
         response.sendRedirect(request.getRequestURI());
     }
+
 
 }

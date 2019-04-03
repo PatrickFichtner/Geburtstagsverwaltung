@@ -8,12 +8,12 @@
     <!--
         Authentifizierung / Authorisierung
         ==================================
-        
+
         Alle URLs, die mit /app/ beginnen, können nur aufgerufen werden,
         wenn der Anwender sich mit einem gültigen Benutzer eingeloggt hat.
         Der Versuch, eine solche Seite aufzrufen, ohne eingeloggt zu sein,
         führt automatisch zur Login-Seite.
-        
+
         Vgl. https://stackoverflow.com/questions/3134228/restrict-jsp-servlet-access-to-specific-users-only/3134323#3134323
         Vgl. https://docs.oracle.com/javaee/7/tutorial/security-advanced003.htm
         Vgl. https://dzone.com/articles/jdbc-realm-and-form-based

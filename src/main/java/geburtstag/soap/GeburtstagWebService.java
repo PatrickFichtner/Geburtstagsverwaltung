@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package geburtstag.soap;
+import geburtststag.ejb.CategoryBean;
 import geburtststag.ejb.GeburtstagBean;
+import geburtststag.jpa.Category;
 import geburtststag.jpa.Geburtstag;
 import java.util.List;
 import javax.ejb.EJB;
@@ -24,10 +26,19 @@ public class GeburtstagWebService {
     @EJB
     GeburtstagBean gb;
     
+    @EJB
+    CategoryBean categoryBean;
+    
     @WebMethod
     @WebResult(name="geburtstage")
     public List<Geburtstag> getAllGeburtstage() {
         return this.gb.findAll();
+    }
+    
+    @WebMethod
+    @WebResult(name="categories")
+    public List<Category> getAllCategories() {
+        return this.categoryBean.findAll();
     }
 
     /*@WebMethod
