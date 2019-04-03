@@ -55,7 +55,13 @@ public class GeburtstagEditServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Verfügbare Kategorien für die Suchfelder ermitteln  
-        request.setAttribute("categories", this.cb.findAllSorted());
+        try {
+            request.setAttribute("categories", this.cb.findAllSorted());
+        }
+        catch (NullPointerException npe) {
+            
+        }
+        
        
         // Zu bearbeitende Geburtstag einlesen
         HttpSession session = request.getSession();
@@ -245,7 +251,7 @@ public class GeburtstagEditServlet extends HttpServlet {
         // Weiter zur nächsten Seite
         if (errors.isEmpty()) {
             // Keine Fehler: Startseite aufrufen
-            response.sendRedirect(WebUtils.appUrl(request, "/app/tasks/list/"));
+            response.sendRedirect(WebUtils.appUrl(request, "/app/geburtstage/home/"));
         } else {
             // Fehler: Formuler erneut anzeigen
             FormValues formValues = new FormValues();
@@ -274,7 +280,7 @@ public class GeburtstagEditServlet extends HttpServlet {
         this.gb.delete(geburtstag);
 
         // Zurück zur Übersicht
-        response.sendRedirect(WebUtils.appUrl(request, "/app/tasks/list/"));
+        response.sendRedirect(WebUtils.appUrl(request, "/app/geburtstage/list/"));
     }
 
 }

@@ -44,7 +44,7 @@
                 </h2>
                 <c:choose>
                     <c:when test="${empty section.tiles}">
-                        <p>Heute hat keiner Geburstag</p> 
+                        <p>Heute hat keiner Geburtstag</p> 
                     </c:when>   
                     <c:otherwise>
                         <c:forEach items="${section.tiles}" var="tile">

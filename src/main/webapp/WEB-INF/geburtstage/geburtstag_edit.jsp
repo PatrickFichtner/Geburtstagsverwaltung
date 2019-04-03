@@ -42,12 +42,15 @@
                 <%-- CSRF-Token --%>
                 <input type="hidden" name="csrf_token" value="${csrf_token}">
 
-                <%-- Eingabefelder --%>
-                <label for="geburtstag_title">Title:</label>
+                <label for="geburtstag_title">Titel:</label>
                 <div class="side-by-side">
-                    <input type="text" name="geburtstag_title" value="${geburtstag_form.values["geburtstag_title"][0]}">
-                </div>
-                
+                    <select name="geburtstag_title">
+                        <option value="">Kein Titel</option>
+                        <option value="Dr.">Dr.</option> 
+                        <option value="Frau">Frau</option> 
+                        <option value="Herr">Herr</option> 
+                    </select> 
+                </div> 
                 <label for="geburtstag_name">Name:
                     <span class="required">*</span>
                 </label>
@@ -60,9 +63,9 @@
                     <input type="text" name="geburtstag_surname" value="${geburtstag_form.values["geburtstag_surname"][0]}" >
                 </div>
                 
-                <label for="geburtstag_notiz">Notiz</label>
+                <label for="geburtstag_notiz">Notiz:</label>
                 <div class="side-by-side">
-                    <input type="text" name="geburtstag_notiznotiz" value="${geburtstag_form.values["geburtstag_notiz"][0]}" >
+                    <input type="text" name="geburtstag_notiz" value="${geburtstag_form.values["geburtstag_notiz"][0]}" >
                 </div>
 
                 <label for="geburtstag_date">
