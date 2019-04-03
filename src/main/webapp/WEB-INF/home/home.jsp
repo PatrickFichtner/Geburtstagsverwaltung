@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Copyright © 2019 Dennis Schulmeister-Zimolong
 
     E-Mail: dhbw@windows3.de
@@ -34,34 +34,38 @@
         <div class="menuitem">
             <a href="<c:url value="/app/geburtstage/categories/"/>">Kategorien bearbeiten</a>
         </div>
+
+        <div class="menuitem">
+            <a href="<c:url value="/signup/"/>">Benutzer bearbeiten</a>
+        </div>
     </jsp:attribute>
 
     <jsp:attribute name="content">
         <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils"/>
-            <c:forEach items="${sections}" var="section">
-                <h2>
-                    <c:out value="${section.label}"/>
-                </h2>
-                <c:choose>
-                    <c:when test="${empty section.tiles}">
-                        <p>Heute hat keiner Geburstag</p> 
-                    </c:when>   
-                    <c:otherwise>
-                        <c:forEach items="${section.tiles}" var="tile">
-                            <div class="tile">
-                                <!--<a href="<c:url value="${tile.href}"/>"-->
-                                    <div class="content">
-                                        <div class="label">
-                                            <c:out value="${tile.name}"/>
-                                        </div>
-                                        <!-- TODO CATEGORY-->
-                                        <div class="icon icon-${tile.icon}"></div>
-                                    </div>
-                                <!-- </a> -->
+        <c:forEach items="${sections}" var="section">
+            <h2>
+                <c:out value="${section.label}"/>
+            </h2>
+            <c:choose>
+                <c:when test="${empty section.tiles}">
+                    <p>Heute hat keiner Geburstag</p>
+                </c:when>
+                <c:otherwise>
+                    <c:forEach items="${section.tiles}" var="tile">
+                        <div class="tile">
+                            <!--<a href="<c:url value="${tile.href}"/>"-->
+                            <div class="content">
+                                <div class="label">
+                                    <c:out value="${tile.name}"/>
+                                </div>
+                                <!-- TODO CATEGORY-->
+                                <div class="icon icon-${tile.icon}"></div>
                             </div>
-                        </c:forEach>
-                    </c:otherwise>
-                </c:choose>        
-            </c:forEach>
+                            <!-- </a> -->
+                        </div>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
     </jsp:attribute>
 </template:base>

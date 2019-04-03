@@ -53,8 +53,8 @@ public class SignUpBean {
      * @return Der gespeicherte Eintrag
      */
 
-    public void signup(String username, String address, String email, String password1) {
-        User user = new User(username, address, email, password1);
+    public void signup(String username, String firstname, String lastname, String password1) {
+        User user = new User(username, firstname, lastname, password1);
         user.addToGroup("app-user");
 ////moneymanager.user_group
         em.persist(user);

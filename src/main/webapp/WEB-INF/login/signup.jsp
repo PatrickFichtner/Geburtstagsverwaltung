@@ -47,20 +47,20 @@
                     </div>
 
 
-                    <label for="signup_address">
-                        Adresse:
+                    <label for="signup_firstname">
+                        Vorname:
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="signup_address" value="${signup_form.values["signup_adress"][0]}">
+                        <input type="text" name="signup_firstname" value="${signup_form.values["signup_firstname"][0]}">
                     </div>
 
-                    <label for="signup_email">
-                        E-Mail:
+                    <label for="signup_lastname">
+                        Nachname:
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="signup_email" value="${signup_form.values["signup_email"][0]}">
+                        <input type="text" name="signup_lastname" value="${signup_form.values["signup_lastname"][0]}">
                     </div>
 
                     <label for="signup_password1">

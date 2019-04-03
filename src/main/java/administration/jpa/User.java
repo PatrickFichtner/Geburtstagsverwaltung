@@ -66,8 +66,8 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     List<Geburtstag> birthday = new ArrayList<>();
 
-    private String address = "";
-    private String email = "";
+    private String firstname = "";
+    private String lastname = "";
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public User() {
@@ -79,12 +79,12 @@ public class User implements Serializable {
         this.passwordHash = this.hashPassword(password);
     }
 
-    public User(String username, String password, String address, String email) {
+    public User(String username, String password, String firstname, String lastname) {
         this.username = username;
         this.password.password = password;
         this.passwordHash = this.hashPassword(password);
-        this.address = address;
-        this.email = email;
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
     //</editor-fold>
 
@@ -105,20 +105,20 @@ public class User implements Serializable {
         this.geburtstag = geburtstag;
     }*/
 
-     public String getAddress() {
-        return address;
+     public String getFirstname() {
+        return firstname;
     }
 
-    public void setAddress(String id) {
-        this.address = id;
+    public void setFirstname(String id) {
+        this.firstname = id;
     }
 
-     public String getEmail() {
-        return email;
+     public String getLastname() {
+        return lastname;
     }
 
-    public void setEmail(String id) {
-        this.email = id;
+    public void setLastname(String id) {
+        this.lastname = id;
     }
     //</editor-fold>
 
