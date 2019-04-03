@@ -49,15 +49,16 @@
                     <c:otherwise>
                         <c:forEach items="${section.tiles}" var="tile">
                             <div class="tile">
-                                <!--<a href="<c:url value="${tile.href}"/>"-->
-                                    <div class="content">
+                                <a href="<c:url value="${tile.href}"/>">
+                                <div class="content">
                                         <div class="label">
                                             <c:out value="${tile.name}"/>
                                         </div>
-                                        <!-- TODO CATEGORY-->
+                                        <div class="category">
+                                            <c:out value="${tile.category}"/>
+                                        </div>
                                         <div class="icon icon-${tile.icon}"></div>
-                                    </div>
-                                <!-- </a> -->
+                                </div>
                             </div>
                         </c:forEach>
                     </c:otherwise>

@@ -175,7 +175,6 @@ public class GeburtstagEditServlet extends HttpServlet {
             geburtstag.getNotiz()
         });
         
-        //TODO Category
         if (geburtstag.getCategory() != null) {
             values.put("geburtstag_category", new String[]{
                 "" + geburtstag.getCategory().getId()
@@ -215,13 +214,13 @@ public class GeburtstagEditServlet extends HttpServlet {
         
         Geburtstag geburtstag = this.getRequestedGeburtstag(request);
 
-        /*if (geburtstagCategory != null && !geburtstagCategory.trim().isEmpty()) {
+        if (geburtstagCategory != null && !geburtstagCategory.trim().isEmpty()) {
             try {
                 geburtstag.setCategory(this.cb.findById(Long.parseLong(geburtstagCategory)));
             } catch (NumberFormatException ex) {
                 // Ungültige oder keine ID mitgegeben
             }
-        }*/
+        }
          
         geburtstag.setTitle(geburtstagTitle);
         
@@ -252,7 +251,7 @@ public class GeburtstagEditServlet extends HttpServlet {
         // Weiter zur nächsten Seite
         if (errors.isEmpty()) {
             // Keine Fehler: Startseite aufrufen
-            response.sendRedirect(WebUtils.appUrl(request, "/app/geburtstage/home/"));
+            response.sendRedirect(WebUtils.appUrl(request, "/app/home/"));
         } else {
             // Fehler: Formuler erneut anzeigen
             FormValues formValues = new FormValues();
@@ -281,7 +280,7 @@ public class GeburtstagEditServlet extends HttpServlet {
         this.gb.delete(geburtstag);
 
         // Zurück zur Übersicht
-        response.sendRedirect(WebUtils.appUrl(request, "/app/geburtstage/list/"));
+        response.sendRedirect(WebUtils.appUrl(request, "/app/home/"));
     }
 
 }

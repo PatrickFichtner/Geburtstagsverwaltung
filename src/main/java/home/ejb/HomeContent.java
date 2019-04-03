@@ -10,8 +10,6 @@ import dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils;
 import geburtststag.ejb.GeburtstagBean;
 import geburtststag.jpa.Category;
 import geburtststag.jpa.Geburtstag;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -66,7 +64,7 @@ public class HomeContent {
                 }    
                 tile.setName(geburtstag.getFullname());
                 tile.setIcon("calendar");
-                // TODO link - tile.setHref("/app/tasks/list/");
+                tile.setHref("/app/geburtstage/geburtstag/"+geburtstag.getId());
                 section.getTiles().add(tile);
             }
         return section;    
