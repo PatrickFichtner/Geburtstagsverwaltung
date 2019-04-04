@@ -37,7 +37,7 @@ verzichten. Hierfür müssen Sie in der Datei
 
 folgende Zeile auskommentieren:
 
-    <schema>JTODO</schema>
+    <schema>GEBURTSTAGSVERWALTUNG</schema>
 
 Bringt dies keine Besserung, sollten Sie die Zeile wieder einkommentieren.
 
