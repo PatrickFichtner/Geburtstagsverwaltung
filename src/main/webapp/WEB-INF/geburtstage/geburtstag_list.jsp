@@ -31,8 +31,9 @@
     <jsp:attribute name="content">
         <%-- Suchfilter --%>
         <form method="GET" class="horizontal" id="search">
-            <input type="text" name="search_text" value="${param.search_text}" placeholder="Suchtext"/>
-
+            <input type="text" name="search_vorname" value="${param.search_vorname}" placeholder="Vorname"/>
+            <input type="text" name="search_nachname" value="${param.search_nachname}" placeholder="Nachname"/>
+            
             <select name="search_category">
                 <option value="">Alle Kategorien</option>
 
@@ -61,8 +62,8 @@
                         <tr>
                             <th>Kategorie</th>
                             <th>Titel</th>
-                            <th>Name</th>
                             <th>Vorname</th>
+                            <th>Nachname</th>
                             <th>Datum</th>
                             <th>Notiz</th>
                         </tr>
@@ -76,12 +77,12 @@
                                 <c:out value="${geburtstag.title}"/>
                             </td>
                             <td>
-                                <c:out value="${geburtstag.name}"/>
+                                <a href="<c:url value="/app/geburtstage/geburtstag/${geburtstag.id}/"/>">
+                                    <c:out value="${geburtstag.name}"/>
+                                </a>
                             </td>
                             <td>
-                                <a href="<c:url value="/app/geburtstage/geburtstag/${geburtstag.id}/"/>">
-                                    <c:out value="${geburtstag.surname}"/>
-                                </a>
+                                <c:out value="${geburtstag.surname}"/>
                             </td>
                             <td>
                                 <c:out value="${utils.formatDate(geburtstag.date)}"/>

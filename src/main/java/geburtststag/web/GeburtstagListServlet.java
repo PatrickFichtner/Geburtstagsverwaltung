@@ -40,7 +40,8 @@ public class GeburtstagListServlet extends HttpServlet {
         request.setAttribute("categories", this.categoryBean.findAllSorted());
 
         // Suchparameter aus der URL auslesen
-        String searchText = request.getParameter("search_text");
+        String searchVorname = request.getParameter("search_vorname");
+        String searchNachname = request.getParameter("search_nachname");
         String searchCategory = request.getParameter("search_category");
 
         // Anzuzeigende Aufgaben suchen
@@ -54,7 +55,7 @@ public class GeburtstagListServlet extends HttpServlet {
             }
         }
 
-        List<Geburtstag> geburtstage = this.geburtstagBean.search(searchText, category);
+        List<Geburtstag> geburtstage = this.geburtstagBean.search(searchVorname, searchNachname, category);
         request.setAttribute("geburtstage", geburtstage);
 
         // Anfrage an die JSP weiterleiten
