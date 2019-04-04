@@ -19,7 +19,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" href="<c:url value="/css/dashboard.css"/>" />
+        <link rel="stylesheet" href="<c:url value="/css/home.css"/>" />
     </jsp:attribute>
 
     <jsp:attribute name="menu">
