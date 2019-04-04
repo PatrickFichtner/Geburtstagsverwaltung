@@ -265,7 +265,7 @@ public class GeburtstagEditServlet extends HttpServlet {
     }
 
     /**
-     * Aufgerufen in doPost: Vorhandene Task löschen
+     * Aufgerufen in doPost: Vorhandene Geburtstag löschen
      *
      * @param request
      * @param response

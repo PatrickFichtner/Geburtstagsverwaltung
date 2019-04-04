@@ -81,7 +81,7 @@ Screenshots
     </tr>
     <tr>
         <td>
-            Dashboard
+            Home
         </td>
         <td>
             Liste mit Aufgaben
