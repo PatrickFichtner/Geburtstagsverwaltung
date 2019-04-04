@@ -12,7 +12,7 @@ Creative Commons Namensnennung 4.0 International Lizenz.
 .tile {
     position: relative;
 
-    border: 1px solid lightgrey;
+    border: 5px solid pink;
     box-shadow: 1px 1px 1px rgba(0,0,0, 0.2);
 
     display: inline-block;
@@ -31,48 +31,19 @@ Creative Commons Namensnennung 4.0 International Lizenz.
     width: 100%;
     height: 100%;
 
-    background-color: white;
-    transition: background-color 0.25s;
+    background-color: rosybrown;
 
-    color: #606060;
+    color: ghostwhite;
+    font-weight: bold;
     z-index: 1;
 }
 
-.tile .content:hover {
-    background-color: #f0f0f0;
-}
 
-.tile a {
-    color: #606060 !important;
-    text-decoration: none !important;
-}
-
-.tile .icon {
-    position: absolute;
-    bottom: 0.5rem;
-    left: 0.5rem;
-
-    color: lightgrey;
-    font-size: 3em;
-
-    z-index: 2;
-}
-
-.tile .amount {
-    position: absolute;
-    bottom: 0.5rem;
-    right: 0.5rem;
-
-    font-size: 2em;
-    z-index: 3;
-}
 
 .tile .label {
     position: absolute;
-    top: 0.5rem;
-    left: 0.5rem;
-
     z-index: 4;
+    margin: 30%;
 }
 
 /* Besondere Kacheln */
@@ -80,17 +51,12 @@ Creative Commons Namensnennung 4.0 International Lizenz.
     background-color: #FFFCEB;
 }
 
-.tile.overview .content:hover {
-    background-color: #FBF6D5;
-}
 
 .tile.status-all .content {
     background-color: #f5f5f5;
     font-weight: bold;
 }
 
-.tile.status-all .content:hover {
-    background-color: #e6e6e6;
-}
+
 
 

@@ -9,9 +9,11 @@
  */
 package dhbwka.wwi.vertsys.javaee.jtodo.common.web;
 
-import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.ValidationBean;
+
+
 import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.UserBean;
 import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
+import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.ValidationBean;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -27,7 +29,7 @@ import javax.servlet.http.HttpSession;
  * Servlet für die Registrierungsseite. Hier kann sich ein neuer Benutzer
  * registrieren. Anschließend wird der auf die Startseite weitergeleitet.
  */
-/**@WebServlet(urlPatterns = {"/signup/"})
+@WebServlet(urlPatterns = {"/signup/"})
 public class SignUpServlet extends HttpServlet {
 
     @EJB
@@ -94,4 +96,4 @@ public class SignUpServlet extends HttpServlet {
         }
     }
 
-}*/
+}
