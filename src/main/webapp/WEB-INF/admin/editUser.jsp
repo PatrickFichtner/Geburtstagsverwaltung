@@ -1,4 +1,4 @@
-ho<%--
+<%--
     Document   : editUser
     Created on : 03.04.2019, 19:54:33
     Author     : Patrick Fichtner
@@ -78,10 +78,13 @@ ho<%--
                     <div class="side-by-side">
                         <input type="password" name="newPasswordConfirm" value="${signup_form.values["newPasswordConfirm"][0]}">
                     </div>
-
+                    <br>
                     <%-- Button zum Abschicken --%>
                     <div class="side-by-side">
-                        <input class="btn btn-primary btn-block" type="submit" value="Speichern">
+                        <%--<input class="btn btn-primary btn-block" type="submit" value="Speichern"> --%>
+                        <button class="icon-pencil" type="submit">
+                            Speichern
+                        </button>
                     </div>
                 </div>
 

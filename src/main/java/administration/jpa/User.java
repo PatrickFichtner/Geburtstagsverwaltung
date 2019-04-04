@@ -45,7 +45,7 @@ public class User implements Serializable {
     private String username;
 
     public class Password {
-        @Size(min = 6, max = 64, message = "Das Passwort muss zwischen sechs und 64 Zeichen lang sein.")
+        @Size(min = 7, max = 63, message = "Das Passwort muss zwischen 7 und 63 Zeichen lang sein.")
         public String password = "";
     }
     @Transient

@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Copyright © 2018 Dennis Schulmeister-Zimolong
 
     E-Mail: dhbw@windows3.de
@@ -44,7 +44,7 @@
                         <span class="required">*</span>
                     </label>
                     <input type="password" name="j_password">
-
+                    <br>
                     <%-- Button zum Abschicken --%>
                     <button class="icon-login" type="submit">
                         Einloggen

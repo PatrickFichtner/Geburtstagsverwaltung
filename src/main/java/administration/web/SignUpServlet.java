@@ -47,7 +47,7 @@ public class SignUpServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Anfrage an dazugerhörige JSP weiterleiten
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login/signup.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin/signup.jsp");
         dispatcher.forward(request, response);
 
         // Alte Formulardaten aus der Session entfernen
@@ -88,7 +88,7 @@ public class SignUpServlet extends HttpServlet {
         if (errors.isEmpty()) {
             //try {
                 //this.userBean.signup(username, password1);
-                  this.signupBean.signup(username, firstname, lastname, password1);
+                  this.signupBean.signup(username, password1, firstname, lastname);
                   //this.userBean.signup(username, address, email, password1);
             //} catch (UserBean.UserAlreadyExistsException ex) {
                 //errors.add(ex.getMessage());
@@ -98,7 +98,7 @@ public class SignUpServlet extends HttpServlet {
         // Weiter zur nächsten Seite
         if (errors.isEmpty()) {
             // Keine Fehler: Startseite aufrufen
-            request.login(username, password1);
+            //request.login(username, password1);
             response.sendRedirect(WebUtils.appUrl(request, "/app/home/"));
         } else {
             // Fehler: Formuler erneut anzeigen

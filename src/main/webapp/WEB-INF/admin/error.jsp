@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Copyright © 2018 Dennis Schulmeister-Zimolong
 
     E-Mail: dhbw@windows3.de
@@ -24,13 +24,13 @@
 
     <jsp:attribute name="menu">
         <div class="menuitem">
-            <a href="<c:url value="/logout/"/>">Nochmal versuchen</a>
+            <a href="<c:url value="/logout/"/>">Nochmal</a>
         </div>
     </jsp:attribute>
 
     <jsp:attribute name="content">
         <p>
-            Das hat leider nicht geklappt. 🐻
+            Benutzername oder Passwort ist falsch 😞
         </p>
     </jsp:attribute>
 </template:base>

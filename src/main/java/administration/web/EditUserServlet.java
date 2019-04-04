@@ -68,7 +68,7 @@ public class EditUserServlet extends HttpServlet{
             session.setAttribute("edit_form", form);
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/home/editUser.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin/editUser.jsp");
         dispatcher.forward(request, response);
 }
     /**
