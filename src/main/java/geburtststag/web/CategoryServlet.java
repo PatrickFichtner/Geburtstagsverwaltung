@@ -5,7 +5,7 @@
  */
 package geburtststag.web;
 
-
+import administration.ejb.ValidationBean;
 import administration.web.FormValues;
 import geburtststag.ejb.CategoryBean;
 import geburtststag.ejb.GeburtstagBean;
