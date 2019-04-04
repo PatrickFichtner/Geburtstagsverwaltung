@@ -45,11 +45,13 @@ public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
      * Anders als in der Vorlesung behandelt, wird die SELECT-Anfrage hier
      * mit der CriteriaBuilder-API vollkommen dynamisch erzeugt.
      *
+     * @param titel Title
      * @param name  Der Name des Geburtstagskind
+     * @param surname 
      * @param category Kategorie (optional)
      * @return Liste mit den gefundenen Aufgaben
      */
-    public List<Geburtstag> search(String name, Category category) {
+    public List<Geburtstag> search(String name, String surname, Category category) {
         // Hilfsobjekt zum Bauen des Query
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
 
@@ -61,21 +63,21 @@ public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
         // ORDER BY date
         query.orderBy(cb.asc(from.get("date")));
 
-        // WHERE t.name LIKE :name
+        
         Predicate p = cb.conjunction();
-
+        
         if (name != null && !name.trim().isEmpty()) {
             p = cb.and(p, cb.like(from.get("name"), "%" + name + "%"));
             query.where(p);
         }
-
-        // WHERE t.category = :category
+        if (surname != null && !surname.trim().isEmpty()) {
+            p = cb.and(p, cb.like(from.get("surname"), "%" + surname + "%"));
+            query.where(p);
+        }
         if (category != null) {
             p = cb.and(p, cb.equal(from.get("category"), category));
             query.where(p);
         }
-
-
         return em.createQuery(query).getResultList();
     }
 

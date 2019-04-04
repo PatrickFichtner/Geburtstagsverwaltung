@@ -41,7 +41,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="content">
-        <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils"/>
+        <jsp:useBean id="utils" class="administration.web.WebUtils"/>
             <c:forEach items="${sections}" var="section">
                 <h2>
                     <c:out value="${section.label}"/>
@@ -64,8 +64,6 @@
                                         <div class="icon icon-${tile.icon}"></div>
                                 </div>
                             </div>
-                            <!-- </a> -->
-                        </div>
                     </c:forEach>
                 </c:otherwise>
             </c:choose>

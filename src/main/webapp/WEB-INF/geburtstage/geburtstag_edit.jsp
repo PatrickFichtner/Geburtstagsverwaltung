@@ -51,14 +51,14 @@
                         <option value="Herr">Herr</option> 
                     </select> 
                 </div> 
-                <label for="geburtstag_name">Name:
+                <label for="geburtstag_name">Vorname:
                     <span class="required">*</span>
                 </label>
                 <div class="side-by-side">
                     <input type="text" name="geburtstag_name" value="${geburtstag_form.values["geburtstag_name"][0]}" >
                 </div>
                 
-                <label for="geburtstag_surname">Surname:</label>
+                <label for="geburtstag_surname">Nachname:</label>
                 <div class="side-by-side">
                     <input type="text" name="geburtstag_surname" value="${geburtstag_form.values["geburtstag_surname"][0]}" >
                 </div>
