@@ -45,4 +45,10 @@ public class GeburtstagWebService {
     public List<Category> getAllCategories() {
         return this.categoryBean.findAll();
     }
+
+    @WebMethod
+    @WebResult(name="users")
+    public List<User> getAllUsers() {
+        return this.userBean.findAll();
+    }
 }

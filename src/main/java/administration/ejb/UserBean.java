@@ -12,6 +12,7 @@ import javax.ejb.EJBContext;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import administration.ejb.EntityBean;
 
 /**
  *
@@ -24,7 +25,7 @@ import javax.persistence.PersistenceContext;
  * Spezielle EJB zum Anlegen eines Benutzers und Aktualisierung des Passworts.
  */
 @Stateless
-public class UserBean {
+public class UserBean extends EntityBean<User, String>{
 
     @PersistenceContext
     EntityManager em;
@@ -39,6 +40,10 @@ public class UserBean {
      */
     public User getCurrentUser() {
         return this.em.find(User.class, this.ctx.getCallerPrincipal().getName());
+    }
+
+    public UserBean(){
+        super(User.class);
     }
 
     /**
