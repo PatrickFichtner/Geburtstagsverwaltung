@@ -5,7 +5,7 @@
  */
 package geburtststag.ejb;
 
-import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.EntityBean;
+import administration.ejb.EntityBean;
 import geburtststag.jpa.Category;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
@@ -24,39 +24,39 @@ public class CategoryBean extends EntityBean<Category, Long> {
     public CategoryBean() {
         super(Category.class);
     }
-    
-    
+
+
     /*
     @PersistenceContext
     EntityManager em;
-    
+
     public Category saveNewCategory(Category category) {
         em.persist(category);
         return em.merge(category);
     }
-    
+
     public Category deleteCategory(long id) {
         Category category = em.find(Category.class, id);
-        
+
         if (category != null) {
             em.remove(category);
         }
         return category;
-    }    
-    
+    }
+
     public Category updateCategory(Category category) {
         return em.merge(category);
     }
-    
-    
+
+
     public Category findCategory(long id) {
         return em.find(Category.class, id);
     }
-    */    
-    
+    */
+
     public List<Category> findAllSorted() {
         return this.em.createQuery("SELECT c FROM Category c ORDER BY c.name").getResultList();
     }
-    
-    
+
+
 }

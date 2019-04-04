@@ -54,8 +54,8 @@
                 <p>Es wurden keine Geburtstage gefunden.</p>
             </c:when>
             <c:otherwise>
-                <jsp:useBean id="utils" class="dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils"/>
-                
+                <jsp:useBean id="utils" class="administration.web.WebUtils"/>
+
                 <table>
                     <thead>
                         <tr>
@@ -70,7 +70,7 @@
                     <c:forEach items="${geburtstage}" var="geburtstag">
                         <tr>
                             <td>
-                                 <c:out value="${geburtstag.category.name}"/>
+                                <c:out value="${geburtstag.category.name}"/>
                             </td>
                             <td>
                                 <c:out value="${geburtstag.title}"/>

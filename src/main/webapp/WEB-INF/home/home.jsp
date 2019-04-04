@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Copyright © 2019 Dennis Schulmeister-Zimolong
 
     E-Mail: dhbw@windows3.de
@@ -34,6 +34,10 @@
         <div class="menuitem">
             <a href="<c:url value="/app/geburtstage/categories/"/>">Kategorien bearbeiten</a>
         </div>
+
+        <div class="menuitem">
+            <a href="<c:url value="/app/user/edit/"/>">Benutzer bearbeiten</a>
+        </div>
     </jsp:attribute>
 
     <jsp:attribute name="content">
@@ -60,9 +64,11 @@
                                         <div class="icon icon-${tile.icon}"></div>
                                 </div>
                             </div>
-                        </c:forEach>
-                    </c:otherwise>
-                </c:choose>        
-            </c:forEach>
+                            <!-- </a> -->
+                        </div>
+                    </c:forEach>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
     </jsp:attribute>
 </template:base>

@@ -6,7 +6,7 @@
 package home.ejb;
 
 
-import dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils;
+import administration.web.WebUtils;
 import geburtststag.ejb.GeburtstagBean;
 import geburtststag.jpa.Category;
 import geburtststag.jpa.Geburtstag;
@@ -23,10 +23,10 @@ import javax.ejb.Stateless;
 @Stateless
 public class HomeContent {
 
-    @EJB 
+    @EJB
     GeburtstagBean gb;
-    
-    
+
+
     /**
      * Vom Home aufgerufenen Methode, um die anzuzeigenden Rubriken und
      * Kacheln zu ermitteln.
@@ -35,22 +35,22 @@ public class HomeContent {
      * angehängt werden müssen
      */
     public void createHomeContent(List<HomeSection> sections) {
-        
+
         // Zunächst einen Abschnitt mit Geburtstage von Heute erstellen und einfügen
         HomeSection section1 = this.createSection("Heute");
-        sections.add(section1);    
+        sections.add(section1);
     }
-    
+
     private HomeSection createSection(String label) {
         HomeSection section = new HomeSection();
         section.setLabel(label);
-        
+
         //Ermitteln von Geburtstage von heute anhand eine Datenbankquery
             String stringToday = WebUtils.formatUtilDate(new Date());
-            java.sql.Date sqlToday = WebUtils.parseDate(stringToday);   
+            java.sql.Date sqlToday = WebUtils.parseDate(stringToday);
             List<Geburtstag> geburtstage = gb.findByDate(sqlToday);
             Iterator it = geburtstage.iterator();
-        
+
             //Tiles erstellen, beschriften und auf den Abschnitt einfügen
             while (it.hasNext()) {
                 HomeTile tile = new HomeTile ();
@@ -61,14 +61,14 @@ public class HomeContent {
                 }
                 else {
                     tile.setCategory("");
-                }    
+                }
                 tile.setName(geburtstag.getFullname());
                 tile.setIcon("calendar");
                 tile.setHref("/app/geburtstage/geburtstag/"+geburtstag.getId());
                 section.getTiles().add(tile);
             }
-        return section;    
-    }    
+        return section;
+    }
 }
-    
+
 

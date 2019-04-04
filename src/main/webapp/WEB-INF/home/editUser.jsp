@@ -1,12 +1,9 @@
 <%--
-    Copyright © 2018 Dennis Schulmeister-Zimolong
-
-    E-Mail: dhbw@windows3.de
-    Webseite: https://www.wpvs.de/
-
-    Dieser Quellcode ist lizenziert unter einer
-    Creative Commons Namensnennung 4.0 International Lizenz.
+    Document   : editUser
+    Created on : 03.04.2019, 19:54:33
+    Author     : Patrick Fichtner
 --%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@taglib tagdir="/WEB-INF/tags/templates" prefix="template"%>
@@ -17,7 +14,7 @@
 
 <template:base>
     <jsp:attribute name="title">
-        Registrierung
+        Benutzerdaten ändern
     </jsp:attribute>
 
     <jsp:attribute name="head">
@@ -26,7 +23,11 @@
 
     <jsp:attribute name="menu">
         <div class="menuitem">
-            <a href="<c:url value="/logout/"/>">Einloggen</a>
+            <a href="<c:url value="/app/home/"/>">Home</a>
+        </div>
+
+        <div class="menuitem">
+            <a href="<c:url value="/app/geburtstage/list/"/>">Liste</a>
         </div>
     </jsp:attribute>
 
@@ -40,57 +41,54 @@
                     <%-- Eingabefelder --%>
                     <label for="signup_username">
                         Benutzername:
-                        <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="signup_username" value="${signup_form.values["signup_username"][0]}">
+                        <input type="text" name="username" value="${edit_form.values["username"][0]}" required="required" autofocus="autofocus" disabled>
                     </div>
 
 
-                    <label for="signup_firstname">
+                    <label for="firstname">
                         Vorname:
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="signup_firstname" value="${signup_form.values["signup_firstname"][0]}">
+                        <input type="text" name="firstname" value="${edit_form.values["firstname"][0]}">
                     </div>
 
-                    <label for="signup_lastname">
+                    <label for="lastname">
                         Nachname:
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="text" name="signup_lastname" value="${signup_form.values["signup_lastname"][0]}">
+                        <input type="text" name="lastname" value="${edit_form.values["lastname"][0]}">
                     </div>
 
-                    <label for="signup_password1">
-                        Passwort:
+                    <label for="newPassword">
+                        Neues Passwort:
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="password" name="signup_password1" value="${signup_form.values["signup_password1"][0]}">
+                        <input type="password" name="newPassword" value="${signup_form.values["newPassword"][0]}">
                     </div>
 
-                    <label for="signup_password2">
+                    <label for="newPasswordConfirm">
                         Passwort (wdh.):
                         <span class="required">*</span>
                     </label>
                     <div class="side-by-side">
-                        <input type="password" name="signup_password2" value="${signup_form.values["signup_password2"][0]}">
+                        <input type="password" name="newPasswordConfirm" value="${signup_form.values["newPasswordConfirm"][0]}">
                     </div>
 
                     <%-- Button zum Abschicken --%>
                     <div class="side-by-side">
-                        <button class="icon-pencil" type="submit">
-                            Registrieren
-                        </button>
+                        <input class="btn btn-primary btn-block" type="submit" value="Speichern">
                     </div>
                 </div>
 
                 <%-- Fehlermeldungen --%>
-                <c:if test="${!empty signup_form.errors}">
+                <c:if test="${!empty edit_form.errors}">
                     <ul class="errors">
-                        <c:forEach items="${signup_form.errors}" var="error">
+                        <c:forEach items="${edit_form.errors}" var="error">
                             <li>${error}</li>
                             </c:forEach>
                     </ul>

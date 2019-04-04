@@ -1,16 +1,11 @@
 /*
- * Copyright © 2018 Dennis Schulmeister-Zimolong
- *
- * E-Mail: dhbw@windows3.de
- * Webseite: https://www.wpvs.de/
- *
- * Dieser Quellcode ist lizenziert unter einer
- * Creative Commons Namensnennung 4.0 International Lizenz.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package dhbwka.wwi.vertsys.javaee.jtodo.common.jpa;
 
+package administration.jpa;
 
-import geburtststag.jpa.Geburtstag;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -30,10 +25,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
+import geburtststag.jpa.Geburtstag;
 /**
- * Datenbankklasse für einen Benutzer.
+ *
+ * @author Patrick Fichtner
  */
+
 @Entity
 @Table(name = "GEBURTSTAGSVERWALTUNG_USER")
 public class User implements Serializable {
@@ -67,7 +64,10 @@ public class User implements Serializable {
     List<String> groups = new ArrayList<>();
 
     @OneToMany(mappedBy = "owner", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-    List<Geburtstag> tasks = new ArrayList<>();
+    List<Geburtstag> birthday = new ArrayList<>();
+
+    private String firstname = "";
+    private String lastname = "";
 
     //<editor-fold defaultstate="collapsed" desc="Konstruktoren">
     public User() {
@@ -77,6 +77,14 @@ public class User implements Serializable {
         this.username = username;
         this.password.password = password;
         this.passwordHash = this.hashPassword(password);
+    }
+
+    public User(String username, String password, String firstname, String lastname) {
+        this.username = username;
+        this.password.password = password;
+        this.passwordHash = this.hashPassword(password);
+        this.firstname = firstname;
+        this.lastname = lastname;
     }
     //</editor-fold>
 
@@ -89,7 +97,29 @@ public class User implements Serializable {
         this.username = id;
     }
 
-   
+    /*public List<Geburtstag> getGeburtstage() {
+        return geburtstag;
+    }
+
+    public void setGeburtstag(List<Geburtstag> geburtstag) {
+        this.geburtstag = geburtstag;
+    }*/
+
+     public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+     public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
     //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc="Passwort setzen und prüfen">

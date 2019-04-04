@@ -5,11 +5,10 @@
  */
 package geburtststag.web;
 
-
-import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.UserBean;
-import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.ValidationBean;
-import dhbwka.wwi.vertsys.javaee.jtodo.common.web.FormValues;
-import dhbwka.wwi.vertsys.javaee.jtodo.common.web.WebUtils;
+import administration.ejb.UserBean;
+import administration.ejb.ValidationBean;
+import administration.web.FormValues;
+import administration.web.WebUtils;
 import geburtststag.ejb.CategoryBean;
 import geburtststag.ejb.GeburtstagBean;
 import geburtststag.jpa.Category;
@@ -38,38 +37,38 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(urlPatterns = "/app/geburtstage/geburtstag/*")
 public class GeburtstagEditServlet extends HttpServlet {
-    
+
     @EJB
     GeburtstagBean gb;
-    
+
     @EJB
     CategoryBean cb;
-    
+
     @EJB
     UserBean userBean;
-    
+
     @EJB
     ValidationBean validationBean;
-    
+
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        // Verfügbare Kategorien für die Suchfelder ermitteln  
+        // Verfügbare Kategorien für die Suchfelder ermitteln
         try {
             request.setAttribute("categories", this.cb.findAllSorted());
         }
         catch (NullPointerException npe) {
-            
+
         }
-        
-       
+
+
         // Zu bearbeitende Geburtstag einlesen
         HttpSession session = request.getSession();
 
         Geburtstag geburtstag = this.getRequestedGeburtstag(request);
         request.setAttribute("edit", geburtstag.getId() != 0);
-                                
+
         if (session.getAttribute("geburtstag_form") == null) {
             // Keine Formulardaten mit fehlerhaften Daten in der Session,
             // daher Formulardaten aus dem Datenbankobjekt übernehmen
@@ -78,10 +77,10 @@ public class GeburtstagEditServlet extends HttpServlet {
 
         // Anfrage an die JSP weiterleiten
         request.getRequestDispatcher("/WEB-INF/geburtstage/geburtstag_edit.jsp").forward(request, response);
-        
+
         session.removeAttribute("gebutstag_form");
     }
-    
+
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -112,7 +111,7 @@ public class GeburtstagEditServlet extends HttpServlet {
      * @return Zu bearbeitende Geburtstag
      */
     private Geburtstag getRequestedGeburtstag(HttpServletRequest request) {
-    
+
         // Zunächst davon ausgehen, dass ein neuer Satz angelegt werden soll
         Geburtstag geburtstag = new Geburtstag ();
         geburtstag.setOwner(this.userBean.getCurrentUser());
@@ -139,7 +138,7 @@ public class GeburtstagEditServlet extends HttpServlet {
             // Ungültige oder keine ID in der URL enthalten
         }
 
-        return geburtstag; 
+        return geburtstag;
     }
 
     /**
@@ -158,19 +157,19 @@ public class GeburtstagEditServlet extends HttpServlet {
         values.put("geburtstag_owner", new String[]{
             geburtstag.getOwner().getUsername()
         });
-        
+
         values.put("geburtstag_title", new String[]{
             geburtstag.getTitle()
         });
-        
+
         values.put("geburtstag_name", new String[]{
             geburtstag.getName()
         });
-        
+
         values.put("geburtstag_surname", new String[]{
             geburtstag.getSurname()
         });
-        
+
         values.put("geburtstag_notiz", new String[]{
             geburtstag.getNotiz()
         });
@@ -189,7 +188,7 @@ public class GeburtstagEditServlet extends HttpServlet {
         FormValues formValues = new FormValues();
         formValues.setValues(values);
         return formValues;
-    
+
     }
 
     /**
@@ -201,7 +200,7 @@ public class GeburtstagEditServlet extends HttpServlet {
      * @throws IOException
      */
     private void saveGeburtstag(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        
+
         // Formulareingaben prüfen
         List<String> errors = new ArrayList<>();
 
@@ -211,7 +210,7 @@ public class GeburtstagEditServlet extends HttpServlet {
         String stringGeburtstagDate = request.getParameter("geburtstag_date");
         String geburtstagNotiz = request.getParameter("geburtstag_notiz");
         String geburtstagCategory = request.getParameter("geburtstag_category");
-        
+
         Geburtstag geburtstag = this.getRequestedGeburtstag(request);
 
         if (geburtstagCategory != null && !geburtstagCategory.trim().isEmpty()) {
@@ -223,24 +222,24 @@ public class GeburtstagEditServlet extends HttpServlet {
         }
          
         geburtstag.setTitle(geburtstagTitle);
-        
+
         if (!geburtstagName.trim().isEmpty()) {
             geburtstag.setName(geburtstagName.trim());
         } else {
             errors.add("Geben Sie bitte einen Namen ein.");
         }
-        
+
         geburtstag.setSurname(geburtstagSurname.trim());
         Date geburtstagDate = WebUtils.parseDate(stringGeburtstagDate);
         geburtstag.setNotiz(geburtstagNotiz);
-      
-        
+
+
         if (geburtstagDate != null) {
             geburtstag.setDate(geburtstagDate);
         } else {
             errors.add("Das Datum muss dem Format dd.mm entsprechen.");
         }
-        
+
         this.validationBean.validate(geburtstag, errors);
 
         // Datensatz speichern
@@ -273,7 +272,7 @@ public class GeburtstagEditServlet extends HttpServlet {
      * @throws ServletException
      * @throws IOException
      */
-    
+
     private void deleteGeburtstag(HttpServletRequest request, HttpServletResponse response) throws IOException {
        // Datensatz löschen
         Geburtstag geburtstag = this.getRequestedGeburtstag(request);

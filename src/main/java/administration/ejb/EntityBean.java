@@ -1,14 +1,15 @@
 /*
- * Copyright © 2018 Dennis Schulmeister-Zimolong
- * 
- * E-Mail: dhbw@windows3.de
- * Webseite: https://www.wpvs.de/
- * 
- * Dieser Quellcode ist lizenziert unter einer
- * Creative Commons Namensnennung 4.0 International Lizenz.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package dhbwka.wwi.vertsys.javaee.jtodo.common.ejb;
 
+package administration.ejb;
+
+/**
+ *
+ * @author Patrick Fichtner
+ */
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,13 +27,13 @@ public abstract class EntityBean<Entity, EntityId> {
     protected EntityManager em;
 
     private final Class<Entity> entityClass;
-    
+
     /**
      * Dieser Konstruktor muss von der erbenden Klasse aufgerufen werden, um
      * das Klassenobjekt der Entity zu setzen. Sonst lässt sich die Methode
      * findById() aufgrund einer Einschränkung der Java Generics hier nicht
      * typsicher definieren.
-     * 
+     *
      * @param entityClass Klasse der zugrunde liegenden Entity
      */
     public EntityBean(Class<Entity> entityClass) {
@@ -42,7 +43,7 @@ public abstract class EntityBean<Entity, EntityId> {
     /**
      * Auslesen eines eindeutigen Datensatzes anhand seiner ID bzw. seines
      * Primary Key.
-     * 
+     *
      * @param id Schlüsselwert
      * @return Gefundener Datensatz oder null
      */
@@ -50,7 +51,7 @@ public abstract class EntityBean<Entity, EntityId> {
         if (id == null) {
             return null;
         }
-        
+
         return em.find(entityClass, id);
     }
 
@@ -90,3 +91,4 @@ public abstract class EntityBean<Entity, EntityId> {
         em.remove(em.merge(entity));
     }
 }
+

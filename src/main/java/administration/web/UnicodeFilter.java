@@ -1,14 +1,15 @@
 /*
- * Copyright © 2019 Dennis Schulmeister-Zimolong
- * 
- * E-Mail: dhbw@windows3.de
- * Webseite: https://www.wpvs.de/
- * 
- * Dieser Quellcode ist lizenziert unter einer
- * Creative Commons Namensnennung 4.0 International Lizenz.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package dhbwka.wwi.vertsys.javaee.jtodo.common.web;
 
+package administration.web;
+
+/**
+ *
+ * @author Patrick Fichtner
+ */
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -39,13 +40,13 @@ public class UnicodeFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain) throws IOException, ServletException {
-        
+
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        
+
         chain.doFilter(request, response);
     }
-    
+
     //<editor-fold defaultstate="collapsed" desc="Methoden, die wir leider mitschleppen müssen">
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -55,5 +56,6 @@ public class UnicodeFilter implements Filter {
     public void destroy() {
     }
     //</editor-fold>
-    
+
 }
+

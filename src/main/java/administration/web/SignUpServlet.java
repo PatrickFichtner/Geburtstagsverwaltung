@@ -53,6 +53,11 @@ public class SignUpServlet extends HttpServlet {
         // Alte Formulardaten aus der Session entfernen
         HttpSession session = request.getSession();
         session.removeAttribute("signup_form");
+
+        //Daten aktueller Benutzer hinzufügen
+        User benutzer = new User();
+        benutzer = this.userBean.getCurrentUser();
+
     }
 
     @Override
@@ -61,49 +66,51 @@ public class SignUpServlet extends HttpServlet {
 
         // Formulareingaben auslesen
         String username = request.getParameter("signup_username");
-        String address = request.getParameter("signup_address");
-        String email = request.getParameter("signup_email");
+        String firstname = request.getParameter("signup_firstname");
+        String lastname = request.getParameter("signup_lastname");
         String password1 = request.getParameter("signup_password1");
         String password2 = request.getParameter("signup_password2");
 
         // Eingaben prüfen
-        User user = new User(username, password1, address, email);
-        //List<String> errors = this.validationBean.validate(user);
-        //this.validationBean.validate(user.getPassword(), errors);
+        User user = new User(username, password1, firstname, lastname);
+        List<String> errors = this.validationBean.validate(user);
+        this.validationBean.validate(user.getPassword(), errors);
 
-        //if (password1 != null && password2 != null && !password1.equals(password2)) {
-            //errors.add("Die beiden Passwörter stimmen nicht überein.");
-        //} else {
-             this.signupBean.signup(username, password1, address, email);
-                request.getRequestDispatcher("/WEB-INF/login/login.jsp").forward(request, response);
+        if (password1 != null && password2 != null && !password1.equals(password2)) {
+            errors.add("Die beiden Passwörter stimmen nicht überein.");
+            //request.getRequestDispatcher("/WEB-INF/login/error.jsp").forward(request, response);
+        } //else {
+             //this.signupBean.signup(username, password1, firstname, lastname);
+                //request.getRequestDispatcher("/WEB-INF/login/login.jsp").forward(request, response);
                 //}
 
         // Neuen Benutzer anlegen
-        /**if (errors.isEmpty()) {
-            try {
+        if (errors.isEmpty()) {
+            //try {
                 //this.userBean.signup(username, password1);
-                  this.signupBean.signup(username, address, email, password1);
-            } catch (UserBean.UserAlreadyExistsException ex) {
-                errors.add(ex.getMessage());
-            }
-        }*/
+                  this.signupBean.signup(username, firstname, lastname, password1);
+                  //this.userBean.signup(username, address, email, password1);
+            //} catch (UserBean.UserAlreadyExistsException ex) {
+                //errors.add(ex.getMessage());
+            //}
+        }
 
         // Weiter zur nächsten Seite
-        /**if (errors.isEmpty()) {
+        if (errors.isEmpty()) {
             // Keine Fehler: Startseite aufrufen
             request.login(username, password1);
-            //response.sendRedirect(WebUtils.appUrl(request, "/app/dashboard/"));
+            response.sendRedirect(WebUtils.appUrl(request, "/app/home/"));
         } else {
             // Fehler: Formuler erneut anzeigen
-            //FormValues formValues = new FormValues();
-            //formValues.setValues(request.getParameterMap());
-            //formValues.setErrors(errors);
+            FormValues formValues = new FormValues();
+            formValues.setValues(request.getParameterMap());
+            formValues.setErrors(errors);
 
             HttpSession session = request.getSession();
-            //session.setAttribute("signup_form", formValues);
+            session.setAttribute("signup_form", formValues);
 
             response.sendRedirect(request.getRequestURI());
-        }*/
+        }
 
     }
 
