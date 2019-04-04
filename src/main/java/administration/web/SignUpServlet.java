@@ -14,7 +14,7 @@ package administration.web;
 import administration.ejb.UserBean;
 import administration.ejb.SignUpBean;
 import administration.jpa.User;
-import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.ValidationBean;
+import administration.ejb.ValidationBean;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
