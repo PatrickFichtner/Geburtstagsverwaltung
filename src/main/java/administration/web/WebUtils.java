@@ -1,14 +1,15 @@
 /*
- * Copyright © 2018 Dennis Schulmeister-Zimolong
- *
- * E-Mail: dhbw@windows3.de
- * Webseite: https://www.wpvs.de/
- *
- * Dieser Quellcode ist lizenziert unter einer
- * Creative Commons Namensnennung 4.0 International Lizenz.
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package dhbwka.wwi.vertsys.javaee.jtodo.common.web;
 
+package administration.web;
+
+/**
+ *
+ * @author Patrick Fichtner
+ */
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.Date;
@@ -42,12 +43,12 @@ public class WebUtils {
     public static String appUrl(HttpServletRequest request, String url) {
         return request.getContextPath() + url;
     }
-    
+
     /**
      * Anhängen eines Query-Parameters an eine vorhandene URL. Enthält die
      * URL noch keine Parameter, wird der Parameter als ?name=wert angehängt,
      * sonst als &name=wert.
-     * 
+     *
      * @param url Zu verändernde URL
      * @param param Name des Parameters
      * @param value Wert des Parameters
@@ -59,13 +60,13 @@ public class WebUtils {
         } else {
             url += "&";
         }
-        
+
         try {
             url += URLEncoder.encode(param, "utf-8") + "=" + URLEncoder.encode(value, "utf-8");
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(WebUtils.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return url;
     }
 
@@ -78,7 +79,7 @@ public class WebUtils {
     public static String formatDate(Date date) {
         return DATE_FORMAT.format(date);
     }
-    
+
     public static String formatUtilDate (java.util.Date date ) {
         return DATE_FORMAT.format(date);
     }
@@ -125,7 +126,7 @@ public class WebUtils {
 
     /**
      * Formatiert eine Double-Zahl für die Ausgabe, z.B. 8,15
-     * 
+     *
      * @param d Zahl
      * @return String für die Ausgabe
      */
@@ -134,10 +135,10 @@ public class WebUtils {
         df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.GERMANY));
         return df.format(d);
     }
-    
+
     /**
      * Formatiert eine Integer-Zahl für die Ausgabe, z.B. 2.450
-     * 
+     *
      * @param i Zahl
      * @return String für die Ausgabe
      */
@@ -145,3 +146,4 @@ public class WebUtils {
         return String.format("%,d", i);
     }
 }
+

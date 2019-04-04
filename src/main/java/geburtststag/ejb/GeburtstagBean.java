@@ -2,7 +2,7 @@
 package geburtststag.ejb;
 
 
-import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.EntityBean;
+import administration.ejb.EntityBean;
 import geburtststag.jpa.Geburtstag;
 import geburtststag.jpa.Category;
 import java.sql.Date;
@@ -21,12 +21,12 @@ import javax.persistence.criteria.Root;
 @Stateless
 @RolesAllowed("app-user")
 public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
-  
-        
+
+
     public GeburtstagBean() {
         super(Geburtstag.class);
     }
-    
+
     /**
      * Alle Geburststage gespeichert von einem Benutzer, nach Fälligkeit sortiert zurückliefern.
      * @param username Benutzername
@@ -37,14 +37,14 @@ public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
                  .setParameter("username", username)
                  .getResultList();
     }
-    
-    
+
+
     /**
      * Suche nach Geburtstage anhand des Namens und Kategorie.
-     * 
+     *
      * Anders als in der Vorlesung behandelt, wird die SELECT-Anfrage hier
      * mit der CriteriaBuilder-API vollkommen dynamisch erzeugt.
-     * 
+     *
      * @param name  Der Name des Geburtstagskind
      * @param category Kategorie (optional)
      * @return Liste mit den gefundenen Aufgaben
@@ -52,7 +52,7 @@ public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
     public List<Geburtstag> search(String name, Category category) {
         // Hilfsobjekt zum Bauen des Query
         CriteriaBuilder cb = this.em.getCriteriaBuilder();
-        
+
         // SELECT g FROM Geburtstag g
         CriteriaQuery<Geburtstag> query = cb.createQuery(Geburtstag.class);
         Root<Geburtstag> from = query.from(Geburtstag.class);
@@ -60,31 +60,31 @@ public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
 
         // ORDER BY date
         query.orderBy(cb.asc(from.get("date")));
-        
+
         // WHERE t.name LIKE :name
         Predicate p = cb.conjunction();
-        
+
         if (name != null && !name.trim().isEmpty()) {
             p = cb.and(p, cb.like(from.get("name"), "%" + name + "%"));
             query.where(p);
         }
-        
+
         // WHERE t.category = :category
         if (category != null) {
             p = cb.and(p, cb.equal(from.get("category"), category));
             query.where(p);
         }
-        
-        
+
+
         return em.createQuery(query).getResultList();
     }
-   
-    
+
+
     /**
      * Die Geburtstage -gespeichert von einem Benutzer- nach einem bestimmten Datum suchen
      * @param username Benutzername
      * @param date Datum
-     * @return Alle Geburtstage gespeichert von einem Benutzer an einem bestimmten Tag 
+     * @return Alle Geburtstage gespeichert von einem Benutzer an einem bestimmten Tag
      */
     public List<Geburtstag> findByDate (Date date) {
         return em.createQuery(
@@ -94,15 +94,15 @@ public class GeburtstagBean extends EntityBean<Geburtstag, Long> {
                      .setParameter("date", date)
                      .getResultList();
     }
-    
 
-    public Geburtstag updateDate(long id, Date date) { 
+
+    public Geburtstag updateDate(long id, Date date) {
         Geburtstag geburtstag = super.em.find(Geburtstag.class, id);
-        if (geburtstag == null) 
+        if (geburtstag == null)
             return null;
-        
+
         geburtstag.setDate(date);
         return super.em.merge(geburtstag);
-    }  
+    }
 }
 

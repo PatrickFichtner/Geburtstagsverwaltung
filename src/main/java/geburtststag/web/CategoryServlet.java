@@ -5,8 +5,8 @@
  */
 package geburtststag.web;
 
-import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.ValidationBean;
-import dhbwka.wwi.vertsys.javaee.jtodo.common.web.FormValues;
+import administration.ejb.ValidationBean;
+import administration.web.FormValues;
 import geburtststag.ejb.CategoryBean;
 import geburtststag.ejb.GeburtstagBean;
 import geburtststag.jpa.Category;
@@ -31,10 +31,10 @@ public class CategoryServlet extends HttpServlet {
 
     @EJB
     CategoryBean categoryBean;
-    
+
     @EJB
     GeburtstagBean geburtstagBean;
-    
+
     @EJB
     ValidationBean validationBean;
 
@@ -42,7 +42,7 @@ public class CategoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         //Alle Kategorien ermitteln
         request.setAttribute("categories", this.categoryBean.findAllSorted());
 
@@ -52,15 +52,15 @@ public class CategoryServlet extends HttpServlet {
 
         //Alte Formulardaten aus der Session entfernen
         HttpSession session = request.getSession();
-        session.removeAttribute("categories_form");        
+        session.removeAttribute("categories_form");
     }
 
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        // Angeforderte Aktion ausführen        
+
+        // Angeforderte Aktion ausführen
         String action = request.getParameter("action");
 
         if (action == null) {

@@ -109,16 +109,16 @@ public class User implements Serializable {
         return firstname;
     }
 
-    public void setFirstname(String id) {
-        this.firstname = id;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
      public String getLastname() {
         return lastname;
     }
 
-    public void setLastname(String id) {
-        this.lastname = id;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
     //</editor-fold>
 
