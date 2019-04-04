@@ -4,8 +4,19 @@
     margin-bottom: 1rem;
 }
 
+th {
+    font-weight: bolder;
+}
+
 td, th {
     padding-right: 2em;
     text-align: left;
     vertical-align: baseline;
+}
+
+table {
+    border: 1px solid darkgrey;
+    border-radius: 0.5em;
+    background: rgba(194, 194, 194, 0.4);
+    padding: 0.5em;
 }
