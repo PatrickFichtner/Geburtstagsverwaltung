@@ -46,6 +46,12 @@ Creative Commons Namensnennung 4.0 International Lizenz.
     margin: 30%;
 }
 
+.tile .category {
+position: absolute;
+bottom: 0.5rem;
+right: 0.5rem;
+}
+
 /* Besondere Kacheln */
 .tile.overview .content {
     background-color: #FFFCEB;
