@@ -13,12 +13,8 @@ package administration.web;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.Date;
-import java.sql.Time;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
@@ -85,16 +81,6 @@ public class WebUtils {
     }
 
     /**
-     * Formatiert eine Uhrzeit für die Ausgabe, z.B. 11:50:00
-     *
-     * @param time Uhrzeit
-     * @return String für die Ausgabe
-     */
-    public static String formatTime(Time time) {
-        return TIME_FORMAT.format(time);
-    }
-
-    /**
      * Erzeugt ein Datumsobjekt aus dem übergebenen String, z.B. 03.06.1986
      *
      * @param input Eingegebener String
@@ -107,43 +93,6 @@ public class WebUtils {
         } catch (ParseException ex) {
             return null;
         }
-    }
-
-    /**
-     * Erzeugt ein Uhrzeitobjekt aus dem übergebenen String, z.B. 09:20:00
-     *
-     * @param input Eingegebener String
-     * @return Uhrzeitobjekt oder null bei einem Fehler
-     */
-    public static Time parseTime(String input) {
-        try {
-            java.util.Date date = TIME_FORMAT.parse(input);
-            return new Time(date.getTime());
-        } catch (ParseException ex) {
-            return null;
-        }
-    }
-
-    /**
-     * Formatiert eine Double-Zahl für die Ausgabe, z.B. 8,15
-     *
-     * @param d Zahl
-     * @return String für die Ausgabe
-     */
-    public String formatDouble(Double d) {
-        DecimalFormat df = new DecimalFormat("#,##0.00");
-        df.setDecimalFormatSymbols(new DecimalFormatSymbols(Locale.GERMANY));
-        return df.format(d);
-    }
-
-    /**
-     * Formatiert eine Integer-Zahl für die Ausgabe, z.B. 2.450
-     *
-     * @param i Zahl
-     * @return String für die Ausgabe
-     */
-    public String formatInteger(int i) {
-        return String.format("%,d", i);
-    }
+    }  
 }
 

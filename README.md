@@ -5,7 +5,7 @@ Entwickler und Repository
 -------------------------
 Diese Anwendung wurde weiterentwickelt von Beliz Balim, Patrick Fichtner, Isabel Börkel
 Zweck dieser Anwendung ist die Verwaltung von Geburtstagen.
-https://github.com/belizbalim/Geburtstag 
+https://github.com/PatrickFichtner/Geburtstagsverwaltung
 
 
 Kurzbeschreibung

@@ -7,9 +7,9 @@ package home.ejb;
 
 
 import administration.web.WebUtils;
-import geburtststag.ejb.GeburtstagBean;
-import geburtststag.jpa.Category;
-import geburtststag.jpa.Geburtstag;
+import geburtstag.ejb.GeburtstagBean;
+import geburtstag.jpa.Category;
+import geburtstag.jpa.Geburtstag;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;

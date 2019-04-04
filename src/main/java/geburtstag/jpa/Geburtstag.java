@@ -2,7 +2,7 @@
  *
  * @author belizbalim
  */
-package geburtststag.jpa;
+package geburtstag.jpa;
 
 //import dhbwka.wwi.vertsys.javaee.jtodo.common.jpa.User;
 import administration.jpa.User;

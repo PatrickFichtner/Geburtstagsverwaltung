@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package geburtststag.ejb;
+package geburtstag.ejb;
 
 import administration.ejb.EntityBean;
-import geburtststag.jpa.Category;
+import geburtstag.jpa.Category;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;

@@ -1,10 +1,10 @@
 
-package geburtststag.ejb;
+package geburtstag.ejb;
 
 
 import administration.ejb.EntityBean;
-import geburtststag.jpa.Geburtstag;
-import geburtststag.jpa.Category;
+import geburtstag.jpa.Geburtstag;
+import geburtstag.jpa.Category;
 import java.sql.Date;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;

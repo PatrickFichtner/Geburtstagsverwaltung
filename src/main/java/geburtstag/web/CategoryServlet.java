@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package geburtststag.web;
+package geburtstag.web;
 
 import administration.ejb.ValidationBean;
 import administration.web.FormValues;
-import geburtststag.ejb.CategoryBean;
-import geburtststag.ejb.GeburtstagBean;
-import geburtststag.jpa.Category;
-import geburtststag.jpa.Geburtstag;
+import geburtstag.ejb.CategoryBean;
+import geburtstag.ejb.GeburtstagBean;
+import geburtstag.jpa.Category;
+import geburtstag.jpa.Geburtstag;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;

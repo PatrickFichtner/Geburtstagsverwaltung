@@ -5,7 +5,7 @@
  */
 package home.ejb;
 
-import geburtststag.jpa.Category;
+import geburtstag.jpa.Category;
 import java.util.Date;
 
 /**

@@ -4,10 +4,10 @@
  * and open the template in the editor.
  */
 package geburtstag.soap;
-import geburtststag.ejb.CategoryBean;
-import geburtststag.ejb.GeburtstagBean;
-import geburtststag.jpa.Category;
-import geburtststag.jpa.Geburtstag;
+import geburtstag.ejb.CategoryBean;
+import geburtstag.ejb.GeburtstagBean;
+import geburtstag.jpa.Category;
+import geburtstag.jpa.Geburtstag;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -45,23 +45,4 @@ public class GeburtstagWebService {
     public List<Category> getAllCategories() {
         return this.categoryBean.findAll();
     }
-
-    /**@WebMethod
-    @WebResult(name="User")
-    public List<User> getAllUser() {
-        return this.userBean.findAll();
-    }*/
-
-    /*@WebMethod
-    @WebResult(name="gig")
-    public List<Gig> getAllGigs() {
-        return this.gigBean.findAll();
-    }
-
-    @WebMethod
-    @WebResult(name="gig")
-    public Gig getGigDetails(@WebParam(name="id") long id) {
-        return this.gigBean.findById(id);
-    }*/
-
 }
