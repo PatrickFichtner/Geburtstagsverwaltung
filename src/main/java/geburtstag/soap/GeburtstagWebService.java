@@ -16,6 +16,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import administration.ejb.UserBean;
 import administration.jpa.User;
+import java.sql.Date;
 
 /**
  *
@@ -38,6 +39,12 @@ public class GeburtstagWebService {
     @WebResult(name="geburtstage")
     public List<Geburtstag> getAllGeburtstage() {
         return this.gb.findAll();
+    }
+    
+    @WebMethod
+    @WebResult(name="geburtstage")
+    public List<Geburtstag> getGeburtstagByDate(Date date) {
+        return this.gb.findByDate(date);
     }
 
     @WebMethod
