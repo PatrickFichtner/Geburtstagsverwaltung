@@ -118,4 +118,42 @@ public class UserBean extends EntityBean<User, String>{
         }
     }
 
+    /**
+     * Anmeldedaten eines Benutzers sowie Benutzergruppenzuordnung und Zugehörigkeit
+     * zu einer der übergebenen Benutzergruppen prüfen.
+     */
+    public User validateUser(String username, String password, String... groups)
+            throws InvalidCredentialsException, AccessRestrictedException {
+
+        // Benutzer suchen und Passwort prüfen
+        User user = em.find(User.class, username);
+        boolean authorize = false;
+
+        if (user == null || !user.checkPassword(password)) {
+            throw new InvalidCredentialsException("Benutzername oder Passwort falsch.");
+        }
+
+        // Zugeordnete Benutzergruppen prüfen, mindestens eine muss vorhanden sein
+        for (String group : groups) {
+            if (user.getGroups().contains(group)) {
+                authorize = true;
+                break;
+            }
+        }
+
+        if (!authorize) {
+            throw new AccessRestrictedException("Sie sind hierfür nicht berechtigt.");
+        }
+
+        // Alles okay!
+        return user;
+    }
+
+        public class AccessRestrictedException extends Exception {
+
+        public AccessRestrictedException(String message) {
+            super(message);
+        }
+    }
+
 }
