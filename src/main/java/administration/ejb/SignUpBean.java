@@ -53,7 +53,10 @@ public class SignUpBean {
      * @return Der gespeicherte Eintrag
      */
 
-    public void signup(String username, String firstname, String lastname, String password1) {
+    public void signup(String username, String firstname, String lastname, String password1) throws  UserAlreadyExistsException {
+         if (em.find(User.class, username) != null) {
+            throw new UserAlreadyExistsException("Der Benutzername $B ist bereits vergeben.".replace("$B", username));
+        }
         User user = new User(username, firstname, lastname, password1);
         user.addToGroup("app-user");
 ////moneymanager.user_group
@@ -126,5 +129,6 @@ public class SignUpBean {
 
         return messages;
     }
+
 
 }

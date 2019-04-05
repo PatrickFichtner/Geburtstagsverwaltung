@@ -78,21 +78,16 @@ public class SignUpServlet extends HttpServlet {
 
         if (password1 != null && password2 != null && !password1.equals(password2)) {
             errors.add("Die beiden Passwörter stimmen nicht überein.");
-            //request.getRequestDispatcher("/WEB-INF/login/error.jsp").forward(request, response);
-        } //else {
-             //this.signupBean.signup(username, password1, firstname, lastname);
-                //request.getRequestDispatcher("/WEB-INF/login/login.jsp").forward(request, response);
-                //}
+        }
+
 
         // Neuen Benutzer anlegen
         if (errors.isEmpty()) {
-            //try {
-                //this.userBean.signup(username, password1);
-                  this.signupBean.signup(username, password1, firstname, lastname);
-                  //this.userBean.signup(username, address, email, password1);
-            //} catch (UserBean.UserAlreadyExistsException ex) {
-                //errors.add(ex.getMessage());
-            //}
+            try {
+                this.signupBean.signup(username, password1, firstname, lastname);
+            } catch (SignUpBean.UserAlreadyExistsException ex) {
+                errors.add(ex.getMessage());
+            }
         }
 
         // Weiter zur nächsten Seite
