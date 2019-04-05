@@ -106,10 +106,10 @@ public class SignUpBean {
         return this.validate(object, messages);
     }*/
 
-        public <T> List<String> validate(T object) {
+        /**public <T> List<String> validate(T object) {
         List<String> messages = new ArrayList<>();
         return this.validate(object, messages);
-    }
+    }*/
 
     /**
      * Wertet die "Bean Validation" Annotationes des übergebenen Objekts aus
