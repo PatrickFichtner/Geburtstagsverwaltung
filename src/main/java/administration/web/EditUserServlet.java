@@ -1,11 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package home.web;
-
+package administration.web;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,25 +17,17 @@ import javax.servlet.http.HttpSession;
 import administration.ejb.UserBean;
 import administration.ejb.ValidationBean;
 import administration.jpa.User;
-import administration.web.FormValues;
-
-
-/**
- *
- * @author Patrick Fichtner
- */
+//import administration.web.FormValues;
 
 @WebServlet(name = "EditUserServlet", urlPatterns = {"/app/user/edit/"})
 
-public class EditUserServlet extends HttpServlet{
-
+public class EditUserServlet extends HttpServlet {
 
     @EJB
     private UserBean userBean;
 
     @EJB
     private ValidationBean validationBean;
-
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -60,8 +45,7 @@ public class EditUserServlet extends HttpServlet{
         User currentUser = this.userBean.getCurrentUser();
         HttpSession session = request.getSession();
 
-
-    //Daten für den Benutzer müssen nur geholt werden
+        //Daten für den Benutzer müssen nur geholt werden
         FormValues form = (FormValues) session.getAttribute("edit_form");
         if (form == null || form.getErrors().isEmpty()) {
             form = this.getFormValuesForCurrentUser(currentUser);
@@ -70,7 +54,8 @@ public class EditUserServlet extends HttpServlet{
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/admin/editUser.jsp");
         dispatcher.forward(request, response);
-}
+    }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -92,9 +77,8 @@ public class EditUserServlet extends HttpServlet{
 
         //User user = this.userBean.findById(username);
         User user = new User();
-         user = this.userBean.getCurrentUser();
+        user = this.userBean.getCurrentUser();
         List<String> errors = new ArrayList<>();
-
 
         if (!newPassword.equals("") && !newPasswordConfirm.equals("")) {
             if (!newPassword.equals(newPasswordConfirm)) {
@@ -103,7 +87,6 @@ public class EditUserServlet extends HttpServlet{
                 user.setPassword(newPassword);
             }
         }
-
 
         user.setFirstname(firstname);
         user.setLastname(lastname);
@@ -132,6 +115,6 @@ public class EditUserServlet extends HttpServlet{
 
         form.setValues(formValues);
 
-    return form;
+        return form;
     }
 }

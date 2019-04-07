@@ -1,15 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package administration.web;
 
-/**
- *
- * @author Patrick Fichtner
- */
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.Date;
@@ -41,9 +31,9 @@ public class WebUtils {
     }
 
     /**
-     * Anhängen eines Query-Parameters an eine vorhandene URL. Enthält die
-     * URL noch keine Parameter, wird der Parameter als ?name=wert angehängt,
-     * sonst als &name=wert.
+     * Anhängen eines Query-Parameters an eine vorhandene URL. Enthält die URL
+     * noch keine Parameter, wird der Parameter als ?name=wert angehängt, sonst
+     * als &name=wert.
      *
      * @param url Zu verändernde URL
      * @param param Name des Parameters
@@ -76,7 +66,7 @@ public class WebUtils {
         return DATE_FORMAT.format(date);
     }
 
-    public static String formatUtilDate (java.util.Date date ) {
+    public static String formatUtilDate(java.util.Date date) {
         return DATE_FORMAT.format(date);
     }
 
@@ -93,6 +83,5 @@ public class WebUtils {
         } catch (ParseException ex) {
             return null;
         }
-    }  
+    }
 }
-

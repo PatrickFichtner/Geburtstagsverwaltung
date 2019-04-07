@@ -1,16 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package administration.web;
 
-/**
- *
- * @author Patrick Fichtner
- */
-//import dhbwka.wwi.vertsys.javaee.jtodo.common.ejb.ValidationBean;
 import administration.ejb.UserBean;
 import administration.ejb.SignUpBean;
 import administration.jpa.User;
@@ -79,7 +68,6 @@ public class SignUpServlet extends HttpServlet {
         if (password1 != null && password2 != null && !password1.equals(password2)) {
             errors.add("Die beiden Passwörter stimmen nicht überein.");
         }
-
 
         // Neuen Benutzer anlegen
         if (errors.isEmpty()) {

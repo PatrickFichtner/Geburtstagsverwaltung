@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package administration.jpa;
 
 import java.io.Serializable;
@@ -26,10 +20,6 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import geburtstag.jpa.Geburtstag;
-/**
- *
- * @author Patrick Fichtner
- */
 
 @Entity
 @Table(name = "GEBURTSTAGSVERWALTUNG_USER")
@@ -45,6 +35,7 @@ public class User implements Serializable {
     private String username;
 
     public class Password {
+
         @Size(min = 7, max = 63, message = "Das Passwort muss zwischen 7 und 63 Zeichen lang sein.")
         public String password = "";
     }
@@ -104,8 +95,7 @@ public class User implements Serializable {
     public void setGeburtstag(List<Geburtstag> geburtstag) {
         this.geburtstag = geburtstag;
     }*/
-
-     public String getFirstname() {
+    public String getFirstname() {
         return firstname;
     }
 
@@ -113,7 +103,7 @@ public class User implements Serializable {
         this.firstname = firstname;
     }
 
-     public String getLastname() {
+    public String getLastname() {
         return lastname;
     }
 
@@ -163,8 +153,8 @@ public class User implements Serializable {
      * gespeichert.
      *
      * Gleichzeitig wird das Passwort im nicht gespeicherten Feld password
-     * abgelegt, um durch die Bean Validation Annotationen überprüft werden
-     * zu können.
+     * abgelegt, um durch die Bean Validation Annotationen überprüft werden zu
+     * können.
      *
      * @param password Neues Passwort
      */
@@ -175,6 +165,7 @@ public class User implements Serializable {
 
     /**
      * Nur für die Validierung bei einer Passwortänderung!
+     *
      * @return Neues, beim Speichern gesetztes Passwort
      */
     public Password getPassword() {

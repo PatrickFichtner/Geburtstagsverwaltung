@@ -1,8 +1,3 @@
-<%--
-    Document   : editUser
-    Created on : 03.04.2019, 19:54:33
-    Author     : Patrick Fichtner
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 

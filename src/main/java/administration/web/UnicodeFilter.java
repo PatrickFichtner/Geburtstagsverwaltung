@@ -1,15 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package administration.web;
 
-/**
- *
- * @author Patrick Fichtner
- */
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -58,4 +48,3 @@ public class UnicodeFilter implements Filter {
     //</editor-fold>
 
 }
-

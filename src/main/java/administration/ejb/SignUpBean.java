@@ -1,15 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package administration.ejb;
 
-/**
- *
- * @author Patrick Fichtner
- */
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -30,16 +20,16 @@ import administration.jpa.User;
 @Stateless
 public class SignUpBean {
 
-@PersistenceContext
+    @PersistenceContext
     EntityManager em;
 
-@Resource
+    @Resource
     EJBContext ctx;
 
-@Resource
+    @Resource
     Validator validator;
 
-       /**
+    /**
      * @return Liste mit allen Gästebucheinträgen
      */
     public List<User> findAllEntries() {
@@ -47,14 +37,14 @@ public class SignUpBean {
                 .getResultList();
     }
 
-
-     /** Speichert einen neuen Benutzer.
+    /**
+     * Speichert einen neuen Benutzer.
+     *
      * @param benutzername Name des Besuchers
      * @return Der gespeicherte Eintrag
      */
-
-    public void signup(String username, String firstname, String lastname, String password1) throws  UserAlreadyExistsException {
-         if (em.find(User.class, username) != null) {
+    public void signup(String username, String firstname, String lastname, String password1) throws UserAlreadyExistsException {
+        if (em.find(User.class, username) != null) {
             throw new UserAlreadyExistsException("Der Benutzername $B ist bereits vergeben.".replace("$B", username));
         }
         User user = new User(username, firstname, lastname, password1);
@@ -64,7 +54,7 @@ public class SignUpBean {
         //return em.merge(user);
     }
 
-/**
+    /**
      *
      * @param username
      * @param password
@@ -81,7 +71,7 @@ public class SignUpBean {
         em.persist(user);
     }
 
- /**
+    /**
      * Fehler: Der Benutzername ist bereits vergeben
      */
     public class UserAlreadyExistsException extends Exception {
@@ -91,29 +81,23 @@ public class SignUpBean {
         }
     }
 
-
-
-
-     /**public class UserExistsException extends Exception {
-
-        public UserExistsException(String message) {
-            super(message);
-        }
-    }
-
-     public <T> List<String> validate(T object) {
-        List<String> messages = new ArrayList<>();
-        return this.validate(object, messages);
-    }*/
-
-        /**public <T> List<String> validate(T object) {
-        List<String> messages = new ArrayList<>();
-        return this.validate(object, messages);
-    }*/
-
     /**
-     * Wertet die "Bean Validation" Annotationes des übergebenen Objekts aus
-     * und stellt die gefundenen Meldungen in messages.
+     * public class UserExistsException extends Exception {
+     *
+     * public UserExistsException(String message) { super(message); } }
+     *
+     * public <T> List<String> validate(T object) { List<String> messages = new
+     * ArrayList<>(); return this.validate(object, messages);
+    }
+     */
+    /**
+     * public <T> List<String> validate(T object) { List<String> messages = new
+     * ArrayList<>(); return this.validate(object, messages);
+    }
+     */
+    /**
+     * Wertet die "Bean Validation" Annotationes des übergebenen Objekts aus und
+     * stellt die gefundenen Meldungen in messages.
      *
      * @param <T>
      * @param object Zu überprüfendes Objekt
@@ -124,11 +108,9 @@ public class SignUpBean {
         Set<ConstraintViolation<T>> violations = this.validator.validate(object);
 
         //violations.forEach((ConstraintViolation<T> violation) -> {
-           // messages.add(violation.getMessage());
+        // messages.add(violation.getMessage());
         //});
-
         return messages;
     }
-
 
 }

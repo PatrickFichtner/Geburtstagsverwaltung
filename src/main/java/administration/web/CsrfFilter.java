@@ -1,15 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Patrick Fichtner
- */
-
-
 package administration.web;
 
 import java.io.IOException;
@@ -184,4 +172,3 @@ class CsrfToken implements Serializable {
     public String token = UUID.randomUUID().toString().replace("-", "");
 
 }
-

@@ -1,10 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package administration.ejb;
+
 import administration.jpa.User;
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
@@ -15,17 +10,10 @@ import javax.persistence.PersistenceContext;
 import administration.ejb.EntityBean;
 
 /**
- *
- * @author Patrick Fichtner
- */
-
-
-
-/**
  * Spezielle EJB zum Anlegen eines Benutzers und Aktualisierung des Passworts.
  */
 @Stateless
-public class UserBean extends EntityBean<User, String>{
+public class UserBean extends EntityBean<User, String> {
 
     @PersistenceContext
     EntityManager em;
@@ -42,7 +30,7 @@ public class UserBean extends EntityBean<User, String>{
         return this.em.find(User.class, this.ctx.getCallerPrincipal().getName());
     }
 
-    public UserBean(){
+    public UserBean() {
         super(User.class);
     }
 
@@ -64,6 +52,7 @@ public class UserBean extends EntityBean<User, String>{
 
     /**
      * Passwort ändern (ohne zu speichern)
+     *
      * @param user
      * @param oldPassword
      * @param newPassword
@@ -80,6 +69,7 @@ public class UserBean extends EntityBean<User, String>{
 
     /**
      * Benutzer löschen
+     *
      * @param user Zu löschender Benutzer
      */
     @RolesAllowed("app-user")
@@ -89,6 +79,7 @@ public class UserBean extends EntityBean<User, String>{
 
     /**
      * Benutzer aktualisieren
+     *
      * @param user Zu aktualisierender Benutzer
      * @return Gespeicherter Benutzer
      */
@@ -119,8 +110,8 @@ public class UserBean extends EntityBean<User, String>{
     }
 
     /**
-     * Anmeldedaten eines Benutzers sowie Benutzergruppenzuordnung und Zugehörigkeit
-     * zu einer der übergebenen Benutzergruppen prüfen.
+     * Anmeldedaten eines Benutzers sowie Benutzergruppenzuordnung und
+     * Zugehörigkeit zu einer der übergebenen Benutzergruppen prüfen.
      */
     public User validateUser(String username, String password, String... groups)
             throws InvalidCredentialsException, AccessRestrictedException {
@@ -149,7 +140,7 @@ public class UserBean extends EntityBean<User, String>{
         return user;
     }
 
-        public class AccessRestrictedException extends Exception {
+    public class AccessRestrictedException extends Exception {
 
         public AccessRestrictedException(String message) {
             super(message);
