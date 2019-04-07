@@ -82,20 +82,6 @@ public class SignUpBean {
     }
 
     /**
-     * public class UserExistsException extends Exception {
-     *
-     * public UserExistsException(String message) { super(message); } }
-     *
-     * public <T> List<String> validate(T object) { List<String> messages = new
-     * ArrayList<>(); return this.validate(object, messages);
-    }
-     */
-    /**
-     * public <T> List<String> validate(T object) { List<String> messages = new
-     * ArrayList<>(); return this.validate(object, messages);
-    }
-     */
-    /**
      * Wertet die "Bean Validation" Annotationes des übergebenen Objekts aus und
      * stellt die gefundenen Meldungen in messages.
      *

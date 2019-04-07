@@ -75,7 +75,6 @@ public class EditUserServlet extends HttpServlet {
         String firstname = request.getParameter("firstname");
         String lastname = request.getParameter("lastname");
 
-        //User user = this.userBean.findById(username);
         User user = new User();
         user = this.userBean.getCurrentUser();
         List<String> errors = new ArrayList<>();
