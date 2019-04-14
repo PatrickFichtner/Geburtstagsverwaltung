@@ -6,6 +6,8 @@ Entwickler und Repository
 Diese Anwendung wurde weiterentwickelt von Beliz Balim, Patrick Fichtner, Isabel Börkel
 Zweck dieser Anwendung ist die Verwaltung von Geburtstagen.
 https://github.com/PatrickFichtner/Geburtstagsverwaltung
+Der dazugehörige SOAP-CLIENT ist unter dem Link https://github.com/PatrickFichtner/Geburtstagsverwaltung_SOAP_Client zu finden. 
+
 
 
 Kurzbeschreibung
